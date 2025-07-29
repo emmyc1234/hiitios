@@ -21,6 +21,8 @@ import jumpingJacksImage from "@assets/videoframe_3491_1753806584802.png";
 import plankHoldImage from "@assets/videoframe_3793_1753806887356.png";
 import bicycleCrunchesImage from "@assets/videoframe_5364_1753806926907.png";
 import russianTwistsImage from "@assets/videoframe_5737_1753806995706.png";
+import jumpSquatImage1 from "@assets/videoframe_5572_1753807055637.png";
+import jumpSquatImage2 from "@assets/videoframe_3804_1753807055640.png";
 
 interface ExerciseImageProps {
   exerciseName: string;
@@ -143,6 +145,27 @@ export function ExerciseImage({ exerciseName, instructions }: ExerciseImageProps
                 className="w-full h-full object-cover"
               />
             </div>
+          ) : exerciseName === "Jump Squats" ? (
+            // Use both jump squat images to show the movement sequence
+            <div className="space-y-2">
+              <div className="w-32 h-16 mx-auto rounded-lg overflow-hidden shadow-md">
+                <img 
+                  src={jumpSquatImage1} 
+                  alt="Jump Squats Exercise - Squat Position"
+                  className="w-full h-full object-cover"
+                />
+              </div>
+              <div className="w-32 h-16 mx-auto rounded-lg overflow-hidden shadow-md">
+                <img 
+                  src={jumpSquatImage2} 
+                  alt="Jump Squats Exercise - Jump Phase"
+                  className="w-full h-full object-cover"
+                />
+              </div>
+              <div className="text-xs text-gray-600 dark:text-gray-400">
+                Squat → Explosive Jump
+              </div>
+            </div>
           ) : (
             <div className={`w-20 h-20 rounded-full flex items-center justify-center mx-auto ${colorClass}`}>
               <IconComponent size={40} />
@@ -215,6 +238,14 @@ export function ExerciseImage({ exerciseName, instructions }: ExerciseImageProps
               <div className="mt-3 p-2 bg-accent/10 rounded-lg">
                 <div className="text-xs text-accent font-medium">
                   Tip: Keep your chest up and rotate from your core, not your arms!
+                </div>
+              </div>
+            )}
+            
+            {exerciseName === "Jump Squats" && (
+              <div className="mt-3 p-2 bg-warning/10 rounded-lg">
+                <div className="text-xs text-warning font-medium">
+                  Tip: Land softly with bent knees to protect your joints!
                 </div>
               </div>
             )}
