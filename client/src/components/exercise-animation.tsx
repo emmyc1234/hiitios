@@ -19,6 +19,7 @@ import burpeeImage1 from "@assets/videoframe_12628_1753806442229.png";
 import burpeeImage2 from "@assets/videoframe_7454_1753806442232.png";
 import jumpingJacksImage from "@assets/videoframe_3491_1753806584802.png";
 import plankHoldImage from "@assets/videoframe_3793_1753806887356.png";
+import bicycleCrunchesImage from "@assets/videoframe_5364_1753806926907.png";
 
 interface ExerciseImageProps {
   exerciseName: string;
@@ -120,6 +121,15 @@ export function ExerciseImage({ exerciseName, instructions }: ExerciseImageProps
               <img 
                 src={plankHoldImage} 
                 alt="Plank Hold Exercise"
+                className="w-full h-full object-cover"
+              />
+            </div>
+          ) : exerciseName === "Bicycle Crunches" ? (
+            // Use actual bicycle crunches image provided by user
+            <div className="w-32 h-20 mx-auto rounded-lg overflow-hidden shadow-md">
+              <img 
+                src={bicycleCrunchesImage} 
+                alt="Bicycle Crunches Exercise"
                 className="w-full h-full object-cover"
               />
             </div>
