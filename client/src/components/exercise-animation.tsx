@@ -23,6 +23,7 @@ import bicycleCrunchesImage from "@assets/videoframe_5364_1753806926907.png";
 import russianTwistsImage from "@assets/videoframe_5737_1753806995706.png";
 import jumpSquatImage1 from "@assets/videoframe_5572_1753807055637.png";
 import jumpSquatImage2 from "@assets/videoframe_3804_1753807055640.png";
+import lungesImage from "@assets/videoframe_5200_1753807873079.png";
 
 interface ExerciseImageProps {
   exerciseName: string;
@@ -166,6 +167,15 @@ export function ExerciseImage({ exerciseName, instructions }: ExerciseImageProps
                 Squat → Explosive Jump
               </div>
             </div>
+          ) : exerciseName === "Lunges" ? (
+            // Use actual lunges image provided by user
+            <div className="w-32 h-20 mx-auto rounded-lg overflow-hidden shadow-md">
+              <img 
+                src={lungesImage} 
+                alt="Lunges Exercise"
+                className="w-full h-full object-cover"
+              />
+            </div>
           ) : (
             <div className={`w-20 h-20 rounded-full flex items-center justify-center mx-auto ${colorClass}`}>
               <IconComponent size={40} />
@@ -246,6 +256,14 @@ export function ExerciseImage({ exerciseName, instructions }: ExerciseImageProps
               <div className="mt-3 p-2 bg-warning/10 rounded-lg">
                 <div className="text-xs text-warning font-medium">
                   Tip: Land softly with bent knees to protect your joints!
+                </div>
+              </div>
+            )}
+            
+            {exerciseName === "Lunges" && (
+              <div className="mt-3 p-2 bg-primary/10 rounded-lg">
+                <div className="text-xs text-primary font-medium">
+                  Tip: Keep your front knee over your ankle, not past your toes!
                 </div>
               </div>
             )}
