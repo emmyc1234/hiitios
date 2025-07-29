@@ -20,6 +20,7 @@ import burpeeImage2 from "@assets/videoframe_7454_1753806442232.png";
 import jumpingJacksImage from "@assets/videoframe_3491_1753806584802.png";
 import plankHoldImage from "@assets/videoframe_3793_1753806887356.png";
 import bicycleCrunchesImage from "@assets/videoframe_5364_1753806926907.png";
+import russianTwistsImage from "@assets/videoframe_5737_1753806995706.png";
 
 interface ExerciseImageProps {
   exerciseName: string;
@@ -133,6 +134,15 @@ export function ExerciseImage({ exerciseName, instructions }: ExerciseImageProps
                 className="w-full h-full object-cover"
               />
             </div>
+          ) : exerciseName === "Russian Twists" ? (
+            // Use actual russian twists image provided by user
+            <div className="w-32 h-20 mx-auto rounded-lg overflow-hidden shadow-md">
+              <img 
+                src={russianTwistsImage} 
+                alt="Russian Twists Exercise"
+                className="w-full h-full object-cover"
+              />
+            </div>
           ) : (
             <div className={`w-20 h-20 rounded-full flex items-center justify-center mx-auto ${colorClass}`}>
               <IconComponent size={40} />
@@ -197,6 +207,14 @@ export function ExerciseImage({ exerciseName, instructions }: ExerciseImageProps
               <div className="mt-3 p-2 bg-primary/10 rounded-lg">
                 <div className="text-xs text-primary font-medium">
                   Tip: Don't pull on your neck - keep the movement controlled!
+                </div>
+              </div>
+            )}
+            
+            {exerciseName === "Russian Twists" && (
+              <div className="mt-3 p-2 bg-accent/10 rounded-lg">
+                <div className="text-xs text-accent font-medium">
+                  Tip: Keep your chest up and rotate from your core, not your arms!
                 </div>
               </div>
             )}
