@@ -18,6 +18,7 @@ import deadBugImage from "@assets/videoframe_6857_1753806329966.png";
 import burpeeImage1 from "@assets/videoframe_12628_1753806442229.png";
 import burpeeImage2 from "@assets/videoframe_7454_1753806442232.png";
 import jumpingJacksImage from "@assets/videoframe_3491_1753806584802.png";
+import plankHoldImage from "@assets/videoframe_3793_1753806887356.png";
 
 interface ExerciseImageProps {
   exerciseName: string;
@@ -113,6 +114,15 @@ export function ExerciseImage({ exerciseName, instructions }: ExerciseImageProps
                 className="w-full h-full object-cover"
               />
             </div>
+          ) : exerciseName === "Plank Hold" ? (
+            // Use actual plank hold image provided by user
+            <div className="w-32 h-20 mx-auto rounded-lg overflow-hidden shadow-md">
+              <img 
+                src={plankHoldImage} 
+                alt="Plank Hold Exercise"
+                className="w-full h-full object-cover"
+              />
+            </div>
           ) : (
             <div className={`w-20 h-20 rounded-full flex items-center justify-center mx-auto ${colorClass}`}>
               <IconComponent size={40} />
@@ -161,6 +171,14 @@ export function ExerciseImage({ exerciseName, instructions }: ExerciseImageProps
               <div className="mt-3 p-2 bg-primary/10 rounded-lg">
                 <div className="text-xs text-primary font-medium">
                   Tip: Keep your knees soft and maintain a steady rhythm!
+                </div>
+              </div>
+            )}
+            
+            {exerciseName === "Plank Hold" && (
+              <div className="mt-3 p-2 bg-accent/10 rounded-lg">
+                <div className="text-xs text-accent font-medium">
+                  Tip: Keep your body straight and don't let your hips sag!
                 </div>
               </div>
             )}
