@@ -14,6 +14,7 @@ import {
   CircleDot
 } from "lucide-react";
 import mountainClimberImage from "@assets/videoframe_648_1753806194505.png";
+import deadBugImage from "@assets/videoframe_6857_1753806329966.png";
 
 interface ExerciseImageProps {
   exerciseName: string;
@@ -70,6 +71,15 @@ export function ExerciseImage({ exerciseName, instructions }: ExerciseImageProps
                 className="w-full h-full object-cover"
               />
             </div>
+          ) : exerciseName === "Dead Bug" ? (
+            // Use actual dead bug image provided by user
+            <div className="w-32 h-20 mx-auto rounded-lg overflow-hidden shadow-md">
+              <img 
+                src={deadBugImage} 
+                alt="Dead Bug Exercise"
+                className="w-full h-full object-cover"
+              />
+            </div>
           ) : (
             <div className={`w-20 h-20 rounded-full flex items-center justify-center mx-auto ${colorClass}`}>
               <IconComponent size={40} />
@@ -94,6 +104,14 @@ export function ExerciseImage({ exerciseName, instructions }: ExerciseImageProps
               <div className="mt-3 p-2 bg-primary/10 rounded-lg">
                 <div className="text-xs text-primary font-medium">
                   Tip: Keep alternating legs rapidly like you're climbing a mountain!
+                </div>
+              </div>
+            )}
+            
+            {exerciseName === "Dead Bug" && (
+              <div className="mt-3 p-2 bg-accent/10 rounded-lg">
+                <div className="text-xs text-accent font-medium">
+                  Tip: Keep your back pressed to the floor throughout the movement!
                 </div>
               </div>
             )}

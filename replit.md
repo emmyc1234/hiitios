@@ -7,7 +7,7 @@ This is a full-stack fitness workout generator application built with React, Exp
 ## User Preferences
 
 Preferred communication style: Simple, everyday language.
-Exercise visuals: User prefers simple icons and clean design over complex animations. Provided MP4 video for mountain climbers exercise as reference.
+Exercise visuals: User prefers simple icons and clean design over complex animations. Provided exercise images for Mountain Climbers and Dead Bug exercises. User will provide images for all 15 exercises in the database.
 
 ## System Architecture
 
