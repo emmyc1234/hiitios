@@ -92,7 +92,7 @@ export function WorkoutComplete({ workout, workoutConfig, onNewWorkout }: Workou
   };
 
   return (
-    <div className="max-w-md mx-auto min-h-screen bg-gradient-to-br from-primary to-warning text-white flex flex-col justify-center p-6">
+    <div className="max-w-md mx-auto min-h-screen bg-gradient-to-br from-primary to-warning dark:from-orange-600 dark:to-yellow-600 text-white flex flex-col justify-center p-6">
       <div className="text-center space-y-6">
         {/* Success Icon */}
         <div className="w-24 h-24 bg-white/20 rounded-full flex items-center justify-center mx-auto pulse-animation">

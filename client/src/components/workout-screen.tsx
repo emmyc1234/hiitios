@@ -10,7 +10,7 @@ import {
   PlayCircle
 } from "lucide-react";
 import { useWorkoutTimer } from "@/hooks/use-workout-timer";
-import { ExerciseAnimation } from "@/components/exercise-animation";
+import { ExerciseImage } from "@/components/exercise-animation";
 import { type WorkoutExercise } from "@shared/schema";
 
 interface WorkoutScreenProps {
@@ -64,7 +64,7 @@ export function WorkoutScreen({
   const strokeDashoffset = circumference - (progress / 100) * circumference;
 
   return (
-    <div className="max-w-md mx-auto min-h-screen bg-white">
+    <div className="max-w-md mx-auto min-h-screen bg-white dark:bg-gray-900">
       {/* Workout Header */}
       <div className="bg-gradient-to-r from-primary to-warning text-white p-4">
         <div className="flex items-center justify-between mb-4">
@@ -105,7 +105,7 @@ export function WorkoutScreen({
       </div>
 
       {/* Current Exercise */}
-      <div className="p-6 bg-white">
+      <div className="p-6 bg-white dark:bg-gray-900">
         <div className="text-center space-y-4">
           {/* Timer Display */}
           <div className="relative w-40 h-40 mx-auto">
@@ -142,23 +142,22 @@ export function WorkoutScreen({
 
           {/* Exercise Info */}
           <div className="space-y-2">
-            <h3 className="text-2xl font-bold text-secondary">{exercise.name}</h3>
+            <h3 className="text-2xl font-bold text-secondary dark:text-white">{exercise.name}</h3>
             <Badge className="bg-primary/10 text-primary hover:bg-primary/15">
               Work Phase
             </Badge>
           </div>
 
-          {/* Exercise Animation */}
-          <ExerciseAnimation 
+          {/* Exercise Image and Instructions */}
+          <ExerciseImage 
             exerciseName={exercise.name}
             instructions={exercise.instructions}
-            isActive={isActive && !isPaused}
           />
 
           {/* Exercise Description */}
-          <Card className="bg-gray-50">
+          <Card className="bg-gray-50 dark:bg-gray-800">
             <CardContent className="p-4">
-              <p className="text-sm text-gray-700 text-left">
+              <p className="text-sm text-gray-700 dark:text-gray-300 text-left">
                 {exercise.description}
               </p>
             </CardContent>
@@ -167,7 +166,7 @@ export function WorkoutScreen({
       </div>
 
       {/* Workout Controls */}
-      <div className="p-4 bg-white border-t border-gray-200">
+      <div className="p-4 bg-white dark:bg-gray-900 border-t border-gray-200 dark:border-gray-700">
         <div className="flex space-x-3">
           <Button 
             variant="outline" 
@@ -189,11 +188,11 @@ export function WorkoutScreen({
 
       {/* Next Exercise Preview */}
       {nextExercise && (
-        <div className="p-4 bg-gray-50 border-t border-gray-200">
+        <div className="p-4 bg-gray-50 dark:bg-gray-800 border-t border-gray-200 dark:border-gray-700">
           <div className="text-center">
-            <div className="text-sm text-gray-600 mb-2">Up Next</div>
-            <div className="font-medium text-secondary">{nextExercise.name}</div>
-            <div className="text-sm text-gray-500">
+            <div className="text-sm text-gray-600 dark:text-gray-400 mb-2">Up Next</div>
+            <div className="font-medium text-secondary dark:text-white">{nextExercise.name}</div>
+            <div className="text-sm text-gray-500 dark:text-gray-400">
               {nextExercise.workDuration}s work • {nextExercise.restDuration}s rest
             </div>
           </div>

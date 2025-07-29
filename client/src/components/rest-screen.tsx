@@ -28,7 +28,7 @@ export function RestScreen({ nextExercise, restDuration, onRestComplete }: RestS
   const strokeDashoffset = circumference - (progress / 100) * circumference;
 
   return (
-    <div className="max-w-md mx-auto min-h-screen bg-gradient-to-br from-accent to-green-400 text-white flex flex-col justify-center p-6">
+    <div className="max-w-md mx-auto min-h-screen bg-gradient-to-br from-accent to-green-400 dark:from-green-600 dark:to-green-800 text-white flex flex-col justify-center p-6">
       <div className="text-center space-y-6">
         {/* Rest Timer */}
         <div className="relative w-32 h-32 mx-auto">
