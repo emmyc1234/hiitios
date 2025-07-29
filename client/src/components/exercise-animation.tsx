@@ -192,6 +192,14 @@ export function ExerciseImage({ exerciseName, instructions }: ExerciseImageProps
                 </div>
               </div>
             )}
+            
+            {exerciseName === "Bicycle Crunches" && (
+              <div className="mt-3 p-2 bg-primary/10 rounded-lg">
+                <div className="text-xs text-primary font-medium">
+                  Tip: Don't pull on your neck - keep the movement controlled!
+                </div>
+              </div>
+            )}
           </div>
         </div>
       </CardContent>
