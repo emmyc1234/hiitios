@@ -17,6 +17,7 @@ import mountainClimberImage from "@assets/videoframe_648_1753806194505.png";
 import deadBugImage from "@assets/videoframe_6857_1753806329966.png";
 import burpeeImage1 from "@assets/videoframe_12628_1753806442229.png";
 import burpeeImage2 from "@assets/videoframe_7454_1753806442232.png";
+import jumpingJacksImage from "@assets/videoframe_3491_1753806584802.png";
 
 interface ExerciseImageProps {
   exerciseName: string;
@@ -103,6 +104,15 @@ export function ExerciseImage({ exerciseName, instructions }: ExerciseImageProps
                 Plank → Jump Up
               </div>
             </div>
+          ) : exerciseName === "Jumping Jacks" ? (
+            // Use actual jumping jacks image provided by user
+            <div className="w-32 h-20 mx-auto rounded-lg overflow-hidden shadow-md">
+              <img 
+                src={jumpingJacksImage} 
+                alt="Jumping Jacks Exercise"
+                className="w-full h-full object-cover"
+              />
+            </div>
           ) : (
             <div className={`w-20 h-20 rounded-full flex items-center justify-center mx-auto ${colorClass}`}>
               <IconComponent size={40} />
@@ -143,6 +153,14 @@ export function ExerciseImage({ exerciseName, instructions }: ExerciseImageProps
               <div className="mt-3 p-2 bg-warning/10 rounded-lg">
                 <div className="text-xs text-warning font-medium">
                   Tip: Land softly on your jump and maintain good form throughout!
+                </div>
+              </div>
+            )}
+            
+            {exerciseName === "Jumping Jacks" && (
+              <div className="mt-3 p-2 bg-primary/10 rounded-lg">
+                <div className="text-xs text-primary font-medium">
+                  Tip: Keep your knees soft and maintain a steady rhythm!
                 </div>
               </div>
             )}
