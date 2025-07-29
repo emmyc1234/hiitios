@@ -11,6 +11,7 @@ import {
   Play, 
   Flame, 
   Moon,
+  Sun,
   User,
   Dumbbell,
   TrainTrack,
@@ -18,6 +19,7 @@ import {
   Heart,
   Zap
 } from "lucide-react";
+import { useTheme } from "@/components/theme-provider";
 import { generateWorkout } from "@/lib/workout-generator";
 import { type WorkoutConfig } from "@shared/schema";
 import { useToast } from "@/hooks/use-toast";
@@ -25,6 +27,7 @@ import { useToast } from "@/hooks/use-toast";
 export function WorkoutSetup() {
   const [, setLocation] = useLocation();
   const { toast } = useToast();
+  const { theme, setTheme } = useTheme();
   const [selectedDuration, setSelectedDuration] = useState<string>("10");
   const [selectedTarget, setSelectedTarget] = useState<string>("abs");
   const [selectedGoal, setSelectedGoal] = useState<string>("endurance");
@@ -109,18 +112,26 @@ export function WorkoutSetup() {
   }
 
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="min-h-screen bg-gray-50 dark:bg-gray-900">
       {/* Header */}
-      <header className="bg-white shadow-sm border-b border-gray-200">
+      <header className="bg-white dark:bg-gray-800 shadow-sm border-b border-gray-200 dark:border-gray-700">
         <div className="max-w-md mx-auto px-4 py-4 flex items-center justify-between">
           <div className="flex items-center space-x-3">
             <div className="w-8 h-8 bg-gradient-to-br from-primary to-warning rounded-lg flex items-center justify-center">
               <Flame className="text-white" size={16} />
             </div>
-            <h1 className="text-xl font-bold text-secondary">HIIT Pro</h1>
+            <h1 className="text-xl font-bold text-secondary dark:text-white">HIIT Pro</h1>
           </div>
-          <Button variant="ghost" size="icon">
-            <Moon className="h-5 w-5 text-gray-600" />
+          <Button 
+            variant="ghost" 
+            size="icon"
+            onClick={() => setTheme(theme === "light" ? "dark" : "light")}
+          >
+            {theme === "light" ? (
+              <Moon className="h-5 w-5 text-gray-600 dark:text-gray-300" />
+            ) : (
+              <Sun className="h-5 w-5 text-gray-600 dark:text-gray-300" />
+            )}
           </Button>
         </div>
       </header>
@@ -129,13 +140,13 @@ export function WorkoutSetup() {
       <main className="max-w-md mx-auto px-4 py-6 space-y-8">
         {/* Welcome Section */}
         <div className="text-center space-y-2">
-          <h2 className="text-2xl font-bold text-secondary">Ready to Sweat?</h2>
-          <p className="text-gray-600">Customize your HIIT workout below</p>
+          <h2 className="text-2xl font-bold text-secondary dark:text-white">Ready to Sweat?</h2>
+          <p className="text-gray-600 dark:text-gray-300">Customize your HIIT workout below</p>
         </div>
 
         {/* Duration Selector */}
         <div className="space-y-4">
-          <h3 className="text-lg font-semibold text-secondary flex items-center">
+          <h3 className="text-lg font-semibold text-secondary dark:text-white flex items-center">
             <Clock className="text-primary mr-2" size={20} />
             Workout Duration
           </h3>
@@ -147,7 +158,7 @@ export function WorkoutSetup() {
                 className={`h-auto p-4 flex-col ${
                   selectedDuration === option.value
                     ? "bg-primary/10 border-primary text-primary hover:bg-primary/15"
-                    : "bg-white hover:border-primary hover:text-primary"
+                    : "bg-white dark:bg-gray-800 hover:border-primary hover:text-primary dark:text-white"
                 }`}
                 onClick={() => setSelectedDuration(option.value)}
               >
@@ -160,7 +171,7 @@ export function WorkoutSetup() {
 
         {/* Target Area Selector */}
         <div className="space-y-4">
-          <h3 className="text-lg font-semibold text-secondary flex items-center">
+          <h3 className="text-lg font-semibold text-secondary dark:text-white flex items-center">
             <Target className="text-primary mr-2" size={20} />
             Target Area
           </h3>
@@ -174,7 +185,7 @@ export function WorkoutSetup() {
                   className={`h-auto p-4 flex-col ${
                     selectedTarget === option.value
                       ? "bg-primary/10 border-primary text-primary hover:bg-primary/15"
-                      : "bg-white hover:border-primary hover:text-primary"
+                      : "bg-white dark:bg-gray-800 hover:border-primary hover:text-primary dark:text-white"
                   }`}
                   onClick={() => setSelectedTarget(option.value)}
                 >
@@ -188,7 +199,7 @@ export function WorkoutSetup() {
 
         {/* Goal Selector */}
         <div className="space-y-4">
-          <h3 className="text-lg font-semibold text-secondary flex items-center">
+          <h3 className="text-lg font-semibold text-secondary dark:text-white flex items-center">
             <Goal className="text-primary mr-2" size={20} />
             Goal
           </h3>
@@ -202,7 +213,7 @@ export function WorkoutSetup() {
                   className={`w-full h-auto p-4 justify-between ${
                     selectedGoal === option.value
                       ? "bg-primary/10 border-primary text-primary hover:bg-primary/15"
-                      : "bg-white hover:border-primary hover:text-primary"
+                      : "bg-white dark:bg-gray-800 hover:border-primary hover:text-primary dark:text-white"
                   }`}
                   onClick={() => setSelectedGoal(option.value)}
                 >
@@ -228,27 +239,27 @@ export function WorkoutSetup() {
 
         {/* Progress Stats */}
         {userProgress && (
-          <Card className="bg-white rounded-xl border border-gray-200">
+          <Card className="bg-white dark:bg-gray-800 rounded-xl border border-gray-200 dark:border-gray-700">
             <CardContent className="pt-6">
-              <h4 className="font-semibold text-secondary mb-3">Your Progress</h4>
+              <h4 className="font-semibold text-secondary dark:text-white mb-3">Your Progress</h4>
               <div className="grid grid-cols-3 gap-4 text-center">
                 <div>
                   <div className="text-2xl font-bold text-primary">
                     {userProgress.workoutsCompleted || 0}
                   </div>
-                  <div className="text-xs text-gray-600">Workouts</div>
+                  <div className="text-xs text-gray-600 dark:text-gray-400">Workouts</div>
                 </div>
                 <div>
                   <div className="text-2xl font-bold text-accent">
                     {userProgress.totalMinutes || 0}
                   </div>
-                  <div className="text-xs text-gray-600">Minutes</div>
+                  <div className="text-xs text-gray-600 dark:text-gray-400">Minutes</div>
                 </div>
                 <div>
                   <div className="text-2xl font-bold text-warning">
                     {userProgress.currentStreak || 0}
                   </div>
-                  <div className="text-xs text-gray-600">Day Streak</div>
+                  <div className="text-xs text-gray-600 dark:text-gray-400">Day Streak</div>
                 </div>
               </div>
             </CardContent>

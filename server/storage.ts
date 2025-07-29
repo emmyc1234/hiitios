@@ -47,7 +47,9 @@ export class MemStorage implements IStorage {
         targetAreas: ["full-body"],
         difficulty: 4,
         equipment: "none",
-        instructions: ["Start in standing position", "Squat down and place hands on floor", "Jump feet back to plank", "Do a push-up", "Jump feet back to squat", "Jump up with arms overhead"]
+        instructions: ["Start in standing position", "Squat down and place hands on floor", "Jump feet back to plank", "Do a push-up", "Jump feet back to squat", "Jump up with arms overhead"],
+        imageUrl: null,
+        animationSteps: ["Standing", "Squat down", "Plank position", "Push-up", "Return to squat", "Jump up"]
       },
       {
         name: "Mountain Climbers",
@@ -55,7 +57,9 @@ export class MemStorage implements IStorage {
         targetAreas: ["full-body", "abs"],
         difficulty: 3,
         equipment: "none",
-        instructions: ["Start in plank position", "Bring right knee to chest", "Quickly switch to left knee", "Maintain plank position", "Keep core engaged", "Maintain steady rhythm"]
+        instructions: ["Start in plank position", "Bring right knee to chest", "Quickly switch to left knee", "Maintain plank position", "Keep core engaged", "Maintain steady rhythm"],
+        imageUrl: null,
+        animationSteps: ["Plank position", "Right knee to chest", "Return to plank", "Left knee to chest", "Return to plank", "Continue alternating"]
       },
       {
         name: "Jumping Jacks",
@@ -63,7 +67,9 @@ export class MemStorage implements IStorage {
         targetAreas: ["full-body"],
         difficulty: 2,
         equipment: "none",
-        instructions: ["Start with feet together", "Jump while spreading legs", "Raise arms overhead", "Jump back to starting position", "Keep knees soft", "Maintain steady rhythm"]
+        instructions: ["Start with feet together", "Jump while spreading legs", "Raise arms overhead", "Jump back to starting position", "Keep knees soft", "Maintain steady rhythm"],
+        imageUrl: null,
+        animationSteps: ["Feet together, arms down", "Jump legs apart, arms up", "Return to start", "Repeat motion", "Keep rhythm", "Stay light on feet"]
       },
       // Abs Exercises
       {
@@ -72,7 +78,9 @@ export class MemStorage implements IStorage {
         targetAreas: ["abs"],
         difficulty: 3,
         equipment: "none",
-        instructions: ["Start in push-up position", "Keep body straight", "Engage core muscles", "Don't let hips sag", "Breathe normally", "Hold position"]
+        instructions: ["Start in push-up position", "Keep body straight", "Engage core muscles", "Don't let hips sag", "Breathe normally", "Hold position"],
+        imageUrl: null,
+        animationSteps: ["Push-up position", "Lower to forearms", "Keep body straight", "Engage core", "Hold steady", "Breathe normally"]
       },
       {
         name: "Bicycle Crunches",
@@ -80,7 +88,9 @@ export class MemStorage implements IStorage {
         targetAreas: ["abs"],
         difficulty: 3,
         equipment: "none",
-        instructions: ["Lie on back with hands behind head", "Lift shoulders off ground", "Bring right elbow to left knee", "Switch to left elbow to right knee", "Keep alternating", "Don't pull on neck"]
+        instructions: ["Lie on back with hands behind head", "Lift shoulders off ground", "Bring right elbow to left knee", "Switch to left elbow to right knee", "Keep alternating", "Don't pull on neck"],
+        imageUrl: null,
+        animationSteps: ["Lie on back", "Hands behind head", "Right elbow to left knee", "Switch sides", "Left elbow to right knee", "Continue cycling motion"]
       },
       {
         name: "Russian Twists",
@@ -88,7 +98,9 @@ export class MemStorage implements IStorage {
         targetAreas: ["abs"],
         difficulty: 3,
         equipment: "none",
-        instructions: ["Sit with knees bent", "Lean back slightly", "Lift feet off ground", "Rotate torso left and right", "Keep chest up", "Control the movement"]
+        instructions: ["Sit with knees bent", "Lean back slightly", "Lift feet off ground", "Rotate torso left and right", "Keep chest up", "Control the movement"],
+        imageUrl: null,
+        animationSteps: ["Sit with knees bent", "Lean back", "Lift feet up", "Twist to right", "Twist to left", "Keep alternating"]
       },
       {
         name: "Dead Bug",
@@ -96,7 +108,9 @@ export class MemStorage implements IStorage {
         targetAreas: ["abs"],
         difficulty: 2,
         equipment: "none",
-        instructions: ["Lie on back", "Arms up, knees bent at 90 degrees", "Lower right arm and left leg", "Return to start", "Switch sides", "Keep back pressed to floor"]
+        instructions: ["Lie on back", "Arms up, knees bent at 90 degrees", "Lower right arm and left leg", "Return to start", "Switch sides", "Keep back pressed to floor"],
+        imageUrl: null,
+        animationSteps: ["Lie on back", "Arms up, knees bent", "Lower right arm, left leg", "Return to start", "Lower left arm, right leg", "Keep back flat"]
       },
       // Legs Exercises
       {
@@ -105,7 +119,9 @@ export class MemStorage implements IStorage {
         targetAreas: ["legs"],
         difficulty: 4,
         equipment: "none",
-        instructions: ["Start in squat position", "Lower into deep squat", "Explode up into jump", "Land softly", "Immediately go into next squat", "Keep chest up"]
+        instructions: ["Start in squat position", "Lower into deep squat", "Explode up into jump", "Land softly", "Immediately go into next squat", "Keep chest up"],
+        imageUrl: null,
+        animationSteps: ["Squat position", "Lower deep squat", "Explode up jumping", "Land softly", "Return to squat", "Repeat motion"]
       },
       {
         name: "Lunges",
@@ -113,7 +129,9 @@ export class MemStorage implements IStorage {
         targetAreas: ["legs"],
         difficulty: 3,
         equipment: "none",
-        instructions: ["Stand with feet hip-width apart", "Step forward with right foot", "Lower back knee toward ground", "Push through front heel to return", "Alternate legs", "Keep torso upright"]
+        instructions: ["Stand with feet hip-width apart", "Step forward with right foot", "Lower back knee toward ground", "Push through front heel to return", "Alternate legs", "Keep torso upright"],
+        imageUrl: null,
+        animationSteps: ["Stand hip-width apart", "Step forward", "Lower back knee", "Push back to start", "Switch legs", "Keep torso upright"]
       },
       {
         name: "Wall Sit",
@@ -121,7 +139,9 @@ export class MemStorage implements IStorage {
         targetAreas: ["legs"],
         difficulty: 3,
         equipment: "wall",
-        instructions: ["Stand with back against wall", "Slide down until thighs parallel", "Keep back flat against wall", "Don't let knees go past toes", "Hold position", "Breathe normally"]
+        instructions: ["Stand with back against wall", "Slide down until thighs parallel", "Keep back flat against wall", "Don't let knees go past toes", "Hold position", "Breathe normally"],
+        imageUrl: null,
+        animationSteps: ["Stand against wall", "Slide down slowly", "Thighs parallel", "Hold position", "Keep back flat", "Breathe steadily"]
       },
       {
         name: "Single Leg Glute Bridges",
@@ -129,7 +149,9 @@ export class MemStorage implements IStorage {
         targetAreas: ["legs"],
         difficulty: 3,
         equipment: "none",
-        instructions: ["Lie on back with knees bent", "Lift one leg up", "Push through planted heel", "Lift hips up", "Squeeze glutes at top", "Lower slowly"]
+        instructions: ["Lie on back with knees bent", "Lift one leg up", "Push through planted heel", "Lift hips up", "Squeeze glutes at top", "Lower slowly"],
+        imageUrl: null,
+        animationSteps: ["Lie on back", "Lift one leg", "Push through heel", "Lift hips up", "Squeeze glutes", "Lower slowly"]
       },
       // Upper Body Exercises
       {
@@ -138,7 +160,9 @@ export class MemStorage implements IStorage {
         targetAreas: ["upper-body"],
         difficulty: 3,
         equipment: "none",
-        instructions: ["Start in plank position", "Lower chest toward ground", "Keep body straight", "Push back up", "Don't let hips sag", "Modify on knees if needed"]
+        instructions: ["Start in plank position", "Lower chest toward ground", "Keep body straight", "Push back up", "Don't let hips sag", "Modify on knees if needed"],
+        imageUrl: null,
+        animationSteps: ["Plank position", "Lower chest down", "Keep body straight", "Push back up", "Control movement", "Repeat motion"]
       },
       {
         name: "Pike Push-ups",
@@ -146,7 +170,9 @@ export class MemStorage implements IStorage {
         targetAreas: ["upper-body"],
         difficulty: 4,
         equipment: "none",
-        instructions: ["Start in downward dog", "Keep hips high", "Lower head toward hands", "Push back up", "Keep legs straight", "Focus on shoulders"]
+        instructions: ["Start in downward dog", "Keep hips high", "Lower head toward hands", "Push back up", "Keep legs straight", "Focus on shoulders"],
+        imageUrl: null,
+        animationSteps: ["Downward dog position", "Keep hips high", "Lower head down", "Push back up", "Maintain pike", "Focus on shoulders"]
       },
       {
         name: "Tricep Dips",
@@ -154,7 +180,9 @@ export class MemStorage implements IStorage {
         targetAreas: ["upper-body"],
         difficulty: 3,
         equipment: "chair",
-        instructions: ["Sit on edge of chair", "Hands beside hips", "Lower body by bending elbows", "Keep elbows close to body", "Push back up", "Don't use legs too much"]
+        instructions: ["Sit on edge of chair", "Hands beside hips", "Lower body by bending elbows", "Keep elbows close to body", "Push back up", "Don't use legs too much"],
+        imageUrl: null,
+        animationSteps: ["Sit on chair edge", "Hands beside hips", "Lower body down", "Bend elbows back", "Push back up", "Control movement"]
       },
       {
         name: "Arm Circles",
@@ -162,7 +190,9 @@ export class MemStorage implements IStorage {
         targetAreas: ["upper-body"],
         difficulty: 1,
         equipment: "none",
-        instructions: ["Extend arms to sides", "Make small circles forward", "Gradually make circles larger", "Reverse direction", "Keep arms straight", "Control the movement"]
+        instructions: ["Extend arms to sides", "Make small circles forward", "Gradually make circles larger", "Reverse direction", "Keep arms straight", "Control the movement"],
+        imageUrl: null,
+        animationSteps: ["Extend arms out", "Small circles forward", "Larger circles", "Reverse direction", "Keep arms straight", "Control the motion"]
       }
     ];
 

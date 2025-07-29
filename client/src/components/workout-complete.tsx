@@ -1,3 +1,4 @@
+import { useState, useEffect } from "react";
 import { useMutation } from "@tanstack/react-query";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
@@ -48,7 +49,7 @@ export function WorkoutComplete({ workout, workoutConfig, onNewWorkout }: Workou
   const estimatedCalories = Math.round(totalDuration * 0.15); // Rough estimate
 
   // Record the completed session
-  useState(() => {
+  useEffect(() => {
     recordSessionMutation.mutate({
       workoutId: null,
       duration: totalDuration,

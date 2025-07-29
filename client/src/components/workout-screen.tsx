@@ -10,6 +10,7 @@ import {
   PlayCircle
 } from "lucide-react";
 import { useWorkoutTimer } from "@/hooks/use-workout-timer";
+import { ExerciseAnimation } from "@/components/exercise-animation";
 import { type WorkoutExercise } from "@shared/schema";
 
 interface WorkoutScreenProps {
@@ -147,6 +148,13 @@ export function WorkoutScreen({
             </Badge>
           </div>
 
+          {/* Exercise Animation */}
+          <ExerciseAnimation 
+            exerciseName={exercise.name}
+            instructions={exercise.instructions}
+            isActive={isActive && !isPaused}
+          />
+
           {/* Exercise Description */}
           <Card className="bg-gray-50">
             <CardContent className="p-4">
@@ -155,25 +163,6 @@ export function WorkoutScreen({
               </p>
             </CardContent>
           </Card>
-
-          {/* Exercise Instructions */}
-          {exercise.instructions && exercise.instructions.length > 0 && (
-            <Card className="bg-gradient-to-br from-gray-100 to-gray-200">
-              <CardContent className="p-4">
-                <div className="text-gray-500 text-center">
-                  <PlayCircle className="mx-auto mb-2" size={32} />
-                  <ul className="text-sm text-left space-y-1">
-                    {exercise.instructions.map((instruction, index) => (
-                      <li key={index} className="flex items-start">
-                        <span className="text-primary mr-2">{index + 1}.</span>
-                        {instruction}
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              </CardContent>
-            </Card>
-          )}
         </div>
       </div>
 

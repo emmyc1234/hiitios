@@ -2,7 +2,7 @@ import type { Express } from "express";
 import { createServer, type Server } from "http";
 import { storage } from "./storage";
 import { workoutConfigSchema, insertWorkoutSessionSchema } from "@shared/schema";
-import { generateWorkout } from "../client/src/lib/workout-generator";
+import { generateWorkout } from "./workout-generator";
 
 export async function registerRoutes(app: Express): Promise<Server> {
   
@@ -102,9 +102,9 @@ export async function registerRoutes(app: Express): Promise<Server> {
       
       // Update user progress
       const user = await storage.getUser(userId) || await storage.createUser({ username: "demo", password: "demo" });
-      const newWorkoutsCompleted = user.workoutsCompleted + 1;
-      const newTotalMinutes = user.totalMinutes + Math.floor(validatedSession.duration / 60);
-      const newStreak = user.currentStreak + 1;
+      const newWorkoutsCompleted = (user.workoutsCompleted || 0) + 1;
+      const newTotalMinutes = (user.totalMinutes || 0) + Math.floor(validatedSession.duration / 60);
+      const newStreak = (user.currentStreak || 0) + 1;
       
       await storage.updateUserProgress(userId, newWorkoutsCompleted, newTotalMinutes, newStreak);
       

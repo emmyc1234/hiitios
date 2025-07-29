@@ -21,6 +21,8 @@ export const exercises = pgTable("exercises", {
   difficulty: integer("difficulty").notNull(), // 1-5
   equipment: text("equipment").default("none"),
   instructions: json("instructions").$type<string[]>().notNull(),
+  imageUrl: text("image_url"),
+  animationSteps: json("animation_steps").$type<string[]>(),
 });
 
 export const workouts = pgTable("workouts", {
