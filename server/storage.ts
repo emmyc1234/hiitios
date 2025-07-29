@@ -1,0 +1,277 @@
+import { type User, type InsertUser, type Exercise, type InsertExercise, type Workout, type InsertWorkout, type WorkoutSession, type InsertWorkoutSession, type WorkoutExercise } from "@shared/schema";
+import { randomUUID } from "crypto";
+
+export interface IStorage {
+  // User methods
+  getUser(id: string): Promise<User | undefined>;
+  getUserByUsername(username: string): Promise<User | undefined>;
+  createUser(user: InsertUser): Promise<User>;
+  updateUserProgress(userId: string, workoutsCompleted: number, totalMinutes: number, currentStreak: number): Promise<User>;
+
+  // Exercise methods
+  getAllExercises(): Promise<Exercise[]>;
+  getExercisesByTargetArea(targetArea: string): Promise<Exercise[]>;
+  createExercise(exercise: InsertExercise): Promise<Exercise>;
+
+  // Workout methods
+  createWorkout(workout: InsertWorkout): Promise<Workout>;
+  getUserWorkouts(userId: string): Promise<Workout[]>;
+  getFavoriteWorkouts(userId: string): Promise<Workout[]>;
+  toggleWorkoutFavorite(workoutId: string, isFavorite: boolean): Promise<Workout>;
+
+  // Workout session methods
+  createWorkoutSession(session: InsertWorkoutSession): Promise<WorkoutSession>;
+  getUserSessions(userId: string): Promise<WorkoutSession[]>;
+}
+
+export class MemStorage implements IStorage {
+  private users: Map<string, User>;
+  private exercises: Map<string, Exercise>;
+  private workouts: Map<string, Workout>;
+  private workoutSessions: Map<string, WorkoutSession>;
+
+  constructor() {
+    this.users = new Map();
+    this.exercises = new Map();
+    this.workouts = new Map();
+    this.workoutSessions = new Map();
+    this.seedExercises();
+  }
+
+  private seedExercises() {
+    const exercisesData: InsertExercise[] = [
+      // Full Body Exercises
+      {
+        name: "Burpees",
+        description: "Start standing, squat down, kick back to plank, push-up, jump feet back, jump up with arms overhead.",
+        targetAreas: ["full-body"],
+        difficulty: 4,
+        equipment: "none",
+        instructions: ["Start in standing position", "Squat down and place hands on floor", "Jump feet back to plank", "Do a push-up", "Jump feet back to squat", "Jump up with arms overhead"]
+      },
+      {
+        name: "Mountain Climbers",
+        description: "Start in plank position. Bring your right knee to your chest, then quickly switch legs. Keep your core tight.",
+        targetAreas: ["full-body", "abs"],
+        difficulty: 3,
+        equipment: "none",
+        instructions: ["Start in plank position", "Bring right knee to chest", "Quickly switch to left knee", "Maintain plank position", "Keep core engaged", "Maintain steady rhythm"]
+      },
+      {
+        name: "Jumping Jacks",
+        description: "Stand with feet together, jump while spreading legs and raising arms overhead, then jump back to start.",
+        targetAreas: ["full-body"],
+        difficulty: 2,
+        equipment: "none",
+        instructions: ["Start with feet together", "Jump while spreading legs", "Raise arms overhead", "Jump back to starting position", "Keep knees soft", "Maintain steady rhythm"]
+      },
+      // Abs Exercises
+      {
+        name: "Plank Hold",
+        description: "Hold a straight plank position, keeping your core tight and back straight. Avoid letting hips sag.",
+        targetAreas: ["abs"],
+        difficulty: 3,
+        equipment: "none",
+        instructions: ["Start in push-up position", "Keep body straight", "Engage core muscles", "Don't let hips sag", "Breathe normally", "Hold position"]
+      },
+      {
+        name: "Bicycle Crunches",
+        description: "Lie on your back, bring opposite elbow to knee in a cycling motion while keeping other leg straight.",
+        targetAreas: ["abs"],
+        difficulty: 3,
+        equipment: "none",
+        instructions: ["Lie on back with hands behind head", "Lift shoulders off ground", "Bring right elbow to left knee", "Switch to left elbow to right knee", "Keep alternating", "Don't pull on neck"]
+      },
+      {
+        name: "Russian Twists",
+        description: "Sit with knees bent, lean back slightly and rotate your torso from side to side.",
+        targetAreas: ["abs"],
+        difficulty: 3,
+        equipment: "none",
+        instructions: ["Sit with knees bent", "Lean back slightly", "Lift feet off ground", "Rotate torso left and right", "Keep chest up", "Control the movement"]
+      },
+      {
+        name: "Dead Bug",
+        description: "Lie on back with arms up and knees bent. Lower opposite arm and leg while keeping back flat.",
+        targetAreas: ["abs"],
+        difficulty: 2,
+        equipment: "none",
+        instructions: ["Lie on back", "Arms up, knees bent at 90 degrees", "Lower right arm and left leg", "Return to start", "Switch sides", "Keep back pressed to floor"]
+      },
+      // Legs Exercises
+      {
+        name: "Jump Squats",
+        description: "Perform a squat then explode up into a jump, landing softly back into squat position.",
+        targetAreas: ["legs"],
+        difficulty: 4,
+        equipment: "none",
+        instructions: ["Start in squat position", "Lower into deep squat", "Explode up into jump", "Land softly", "Immediately go into next squat", "Keep chest up"]
+      },
+      {
+        name: "Lunges",
+        description: "Step forward into a lunge position, lower back knee toward ground, then push back to start.",
+        targetAreas: ["legs"],
+        difficulty: 3,
+        equipment: "none",
+        instructions: ["Stand with feet hip-width apart", "Step forward with right foot", "Lower back knee toward ground", "Push through front heel to return", "Alternate legs", "Keep torso upright"]
+      },
+      {
+        name: "Wall Sit",
+        description: "Lean against wall with thighs parallel to ground, hold position with back flat against wall.",
+        targetAreas: ["legs"],
+        difficulty: 3,
+        equipment: "wall",
+        instructions: ["Stand with back against wall", "Slide down until thighs parallel", "Keep back flat against wall", "Don't let knees go past toes", "Hold position", "Breathe normally"]
+      },
+      {
+        name: "Single Leg Glute Bridges",
+        description: "Lie on back, lift one leg, push through heel of planted foot to lift hips up.",
+        targetAreas: ["legs"],
+        difficulty: 3,
+        equipment: "none",
+        instructions: ["Lie on back with knees bent", "Lift one leg up", "Push through planted heel", "Lift hips up", "Squeeze glutes at top", "Lower slowly"]
+      },
+      // Upper Body Exercises
+      {
+        name: "Push-ups",
+        description: "Start in plank position, lower chest to ground, push back up to start. Modify on knees if needed.",
+        targetAreas: ["upper-body"],
+        difficulty: 3,
+        equipment: "none",
+        instructions: ["Start in plank position", "Lower chest toward ground", "Keep body straight", "Push back up", "Don't let hips sag", "Modify on knees if needed"]
+      },
+      {
+        name: "Pike Push-ups",
+        description: "Start in downward dog position, lower head toward ground between hands, push back up.",
+        targetAreas: ["upper-body"],
+        difficulty: 4,
+        equipment: "none",
+        instructions: ["Start in downward dog", "Keep hips high", "Lower head toward hands", "Push back up", "Keep legs straight", "Focus on shoulders"]
+      },
+      {
+        name: "Tricep Dips",
+        description: "Sit on edge of chair, lower body by bending elbows, push back up.",
+        targetAreas: ["upper-body"],
+        difficulty: 3,
+        equipment: "chair",
+        instructions: ["Sit on edge of chair", "Hands beside hips", "Lower body by bending elbows", "Keep elbows close to body", "Push back up", "Don't use legs too much"]
+      },
+      {
+        name: "Arm Circles",
+        description: "Extend arms to sides and make small to large circles forward and backward.",
+        targetAreas: ["upper-body"],
+        difficulty: 1,
+        equipment: "none",
+        instructions: ["Extend arms to sides", "Make small circles forward", "Gradually make circles larger", "Reverse direction", "Keep arms straight", "Control the movement"]
+      }
+    ];
+
+    exercisesData.forEach(exercise => {
+      const id = randomUUID();
+      this.exercises.set(id, { ...exercise, id });
+    });
+  }
+
+  async getUser(id: string): Promise<User | undefined> {
+    return this.users.get(id);
+  }
+
+  async getUserByUsername(username: string): Promise<User | undefined> {
+    return Array.from(this.users.values()).find(
+      (user) => user.username === username,
+    );
+  }
+
+  async createUser(insertUser: InsertUser): Promise<User> {
+    const id = randomUUID();
+    const user: User = { 
+      ...insertUser, 
+      id, 
+      workoutsCompleted: 0,
+      totalMinutes: 0,
+      currentStreak: 0,
+      createdAt: new Date()
+    };
+    this.users.set(id, user);
+    return user;
+  }
+
+  async updateUserProgress(userId: string, workoutsCompleted: number, totalMinutes: number, currentStreak: number): Promise<User> {
+    const user = this.users.get(userId);
+    if (!user) throw new Error("User not found");
+    
+    const updatedUser = { ...user, workoutsCompleted, totalMinutes, currentStreak };
+    this.users.set(userId, updatedUser);
+    return updatedUser;
+  }
+
+  async getAllExercises(): Promise<Exercise[]> {
+    return Array.from(this.exercises.values());
+  }
+
+  async getExercisesByTargetArea(targetArea: string): Promise<Exercise[]> {
+    return Array.from(this.exercises.values()).filter(
+      exercise => exercise.targetAreas.includes(targetArea)
+    );
+  }
+
+  async createExercise(insertExercise: InsertExercise): Promise<Exercise> {
+    const id = randomUUID();
+    const exercise: Exercise = { ...insertExercise, id };
+    this.exercises.set(id, exercise);
+    return exercise;
+  }
+
+  async createWorkout(insertWorkout: InsertWorkout): Promise<Workout> {
+    const id = randomUUID();
+    const workout: Workout = { 
+      ...insertWorkout, 
+      id, 
+      completedAt: null,
+      isFavorite: false,
+      createdAt: new Date()
+    };
+    this.workouts.set(id, workout);
+    return workout;
+  }
+
+  async getUserWorkouts(userId: string): Promise<Workout[]> {
+    return Array.from(this.workouts.values()).filter(
+      workout => workout.userId === userId
+    );
+  }
+
+  async getFavoriteWorkouts(userId: string): Promise<Workout[]> {
+    return Array.from(this.workouts.values()).filter(
+      workout => workout.userId === userId && workout.isFavorite
+    );
+  }
+
+  async toggleWorkoutFavorite(workoutId: string, isFavorite: boolean): Promise<Workout> {
+    const workout = this.workouts.get(workoutId);
+    if (!workout) throw new Error("Workout not found");
+    
+    const updatedWorkout = { ...workout, isFavorite };
+    this.workouts.set(workoutId, updatedWorkout);
+    return updatedWorkout;
+  }
+
+  async createWorkoutSession(insertSession: InsertWorkoutSession): Promise<WorkoutSession> {
+    const id = randomUUID();
+    const session: WorkoutSession = { 
+      ...insertSession, 
+      id, 
+      completedAt: new Date()
+    };
+    this.workoutSessions.set(id, session);
+    return session;
+  }
+
+  async getUserSessions(userId: string): Promise<WorkoutSession[]> {
+    return Array.from(this.workoutSessions.values()).filter(
+      session => session.userId === userId
+    );
+  }
+}
+
+export const storage = new MemStorage();
