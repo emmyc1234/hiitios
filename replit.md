@@ -7,7 +7,7 @@ This is a full-stack fitness workout generator application built with React, Exp
 ## User Preferences
 
 Preferred communication style: Simple, everyday language.
-Exercise visuals: User prefers simple icons and clean design over complex animations. Successfully integrated all 15 real exercise demonstration images from MuscleWiki screenshots with proper form guidance. Added Vertical Leg Crunch exercise with demonstration image (August 1, 2025). Completed image integration for all exercises in the database.
+Exercise visuals: User prefers simple icons and clean design over complex animations. Successfully integrated all 15 real exercise demonstration images from MuscleWiki screenshots with proper form guidance. Added Vertical Leg Crunch exercise with demonstration image (August 1, 2025). Completed image integration for all exercises in the database. Added more exercises with existing images to full-body workouts for better variety (August 1, 2025).
 
 ## System Architecture
 

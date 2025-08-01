@@ -75,7 +75,7 @@ export class MemStorage implements IStorage {
       {
         name: "Plank Hold",
         description: "Hold a straight plank position, keeping your core tight and back straight. Avoid letting hips sag.",
-        targetAreas: ["abs"],
+        targetAreas: ["abs", "full-body"],
         difficulty: 3,
         equipment: "none",
         instructions: ["Start in push-up position", "Keep body straight", "Engage core muscles", "Don't let hips sag", "Breathe normally", "Hold position"],
@@ -85,7 +85,7 @@ export class MemStorage implements IStorage {
       {
         name: "Bicycle Crunches",
         description: "Lie on your back, bring opposite elbow to knee in a cycling motion while keeping other leg straight.",
-        targetAreas: ["abs"],
+        targetAreas: ["abs", "full-body"],
         difficulty: 3,
         equipment: "none",
         instructions: ["Lie on back with hands behind head", "Lift shoulders off ground", "Bring right elbow to left knee", "Switch to left elbow to right knee", "Keep alternating", "Don't pull on neck"],
@@ -95,7 +95,7 @@ export class MemStorage implements IStorage {
       {
         name: "Vertical Leg Crunch",
         description: "Legs extended vertically, crunch upper body toward legs for intense ab workout.",
-        targetAreas: ["abs"],
+        targetAreas: ["abs", "full-body"],
         difficulty: 3,
         equipment: "none",
         instructions: ["Lie on back", "Extend legs straight up", "Hands behind head", "Crunch upper body toward legs", "Keep legs vertical", "Focus on upper abs"],
@@ -105,7 +105,7 @@ export class MemStorage implements IStorage {
       {
         name: "Russian Twists",
         description: "Sit with knees bent, lean back slightly and rotate your torso from side to side.",
-        targetAreas: ["abs"],
+        targetAreas: ["abs", "full-body"],
         difficulty: 3,
         equipment: "none",
         instructions: ["Sit with knees bent", "Lean back slightly", "Lift feet off ground", "Rotate torso left and right", "Keep chest up", "Control the movement"],
@@ -115,7 +115,7 @@ export class MemStorage implements IStorage {
       {
         name: "Dead Bug",
         description: "Lie on back with arms up and knees bent. Lower opposite arm and leg while keeping back flat.",
-        targetAreas: ["abs"],
+        targetAreas: ["abs", "full-body"],
         difficulty: 2,
         equipment: "none",
         instructions: ["Lie on back", "Arms up, knees bent at 90 degrees", "Lower right arm and left leg", "Return to start", "Switch sides", "Keep back pressed to floor"],
@@ -126,7 +126,7 @@ export class MemStorage implements IStorage {
       {
         name: "Jump Squats",
         description: "Perform a squat then explode up into a jump, landing softly back into squat position.",
-        targetAreas: ["legs"],
+        targetAreas: ["legs", "full-body"],
         difficulty: 4,
         equipment: "none",
         instructions: ["Start in squat position", "Lower into deep squat", "Explode up into jump", "Land softly", "Immediately go into next squat", "Keep chest up"],
@@ -136,7 +136,7 @@ export class MemStorage implements IStorage {
       {
         name: "Lunges",
         description: "Step forward into a lunge position, lower back knee toward ground, then push back to start.",
-        targetAreas: ["legs"],
+        targetAreas: ["legs", "full-body"],
         difficulty: 3,
         equipment: "none",
         instructions: ["Stand with feet hip-width apart", "Step forward with right foot", "Lower back knee toward ground", "Push through front heel to return", "Alternate legs", "Keep torso upright"],
@@ -146,7 +146,7 @@ export class MemStorage implements IStorage {
       {
         name: "Wall Sit",
         description: "Lean against wall with thighs parallel to ground, hold position with back flat against wall.",
-        targetAreas: ["legs"],
+        targetAreas: ["legs", "full-body"],
         difficulty: 3,
         equipment: "wall",
         instructions: ["Stand with back against wall", "Slide down until thighs parallel", "Keep back flat against wall", "Don't let knees go past toes", "Hold position", "Breathe normally"],
@@ -156,7 +156,7 @@ export class MemStorage implements IStorage {
       {
         name: "Single Leg Glute Bridges",
         description: "Lie on back, lift one leg, push through heel of planted foot to lift hips up.",
-        targetAreas: ["legs"],
+        targetAreas: ["legs", "full-body"],
         difficulty: 3,
         equipment: "none",
         instructions: ["Lie on back with knees bent", "Lift one leg up", "Push through planted heel", "Lift hips up", "Squeeze glutes at top", "Lower slowly"],
@@ -167,7 +167,7 @@ export class MemStorage implements IStorage {
       {
         name: "Push-ups",
         description: "Start in plank position, lower chest to ground, push back up to start. Modify on knees if needed.",
-        targetAreas: ["upper-body"],
+        targetAreas: ["upper-body", "full-body"],
         difficulty: 3,
         equipment: "none",
         instructions: ["Start in plank position", "Lower chest toward ground", "Keep body straight", "Push back up", "Don't let hips sag", "Modify on knees if needed"],
@@ -195,9 +195,29 @@ export class MemStorage implements IStorage {
         animationSteps: ["Diamond hand position", "Plank stance", "Lower to diamond", "Keep elbows in", "Push back up", "Control movement"]
       },
       {
+        name: "Pike Push-ups",
+        description: "In downward dog position, lower head toward ground and push back up. Great for shoulders.",
+        targetAreas: ["upper-body", "full-body"],
+        difficulty: 4,
+        equipment: "none",
+        instructions: ["Start in downward dog position", "Lower head toward ground", "Keep hips high", "Push back up", "Don't let hips sag", "Focus on shoulders"],
+        imageUrl: null,
+        animationSteps: ["Downward dog position", "Lower head down", "Keep hips high", "Push back up", "Control movement", "Repeat motion"]
+      },
+      {
+        name: "Tricep Dips",
+        description: "Use chair or bench, lower body by bending arms, push back up to work triceps.",
+        targetAreas: ["upper-body", "full-body"],
+        difficulty: 3,
+        equipment: "chair",
+        instructions: ["Sit on edge of chair", "Hands on seat beside hips", "Slide forward off chair", "Lower by bending arms", "Push back up", "Keep elbows close"],
+        imageUrl: null,
+        animationSteps: ["Sit on chair edge", "Hands beside hips", "Slide forward", "Lower body down", "Push back up", "Keep elbows in"]
+      },
+      {
         name: "Arm Circles",
         description: "Extend arms to sides and make small to large circles forward and backward.",
-        targetAreas: ["upper-body"],
+        targetAreas: ["upper-body", "full-body"],
         difficulty: 1,
         equipment: "none",
         instructions: ["Extend arms to sides", "Make small circles forward", "Gradually make circles larger", "Reverse direction", "Keep arms straight", "Control the movement"],
