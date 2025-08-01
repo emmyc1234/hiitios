@@ -52,31 +52,40 @@ export function generateWorkout(config: WorkoutConfig, exercises: Exercise[]): W
   for (let i = 0; i < maxExercises; i++) {
     let selectedExercise: Exercise | null = null;
     
-    // First, try to find an unused exercise
-    for (const exercise of shuffledExercises) {
-      const usageCount = exerciseUsageCount.get(exercise.id) || 0;
-      if (usageCount === 0) {
-        selectedExercise = exercise;
-        break;
-      }
-    }
+    // Priority 1: Find completely unused exercises (count = 0)
+    const unusedExercises = shuffledExercises.filter(exercise => 
+      (exerciseUsageCount.get(exercise.id) || 0) === 0
+    );
     
-    // If no unused exercises, find one that can be repeated (max 2 times, with 3+ exercise gap)
-    if (!selectedExercise) {
-      for (const exercise of shuffledExercises) {
+    if (unusedExercises.length > 0) {
+      selectedExercise = unusedExercises[0];
+    } else {
+      // Priority 2: Find exercises used only once with adequate spacing (3+ gap)
+      const onceUsedExercises = shuffledExercises.filter(exercise => {
         const usageCount = exerciseUsageCount.get(exercise.id) || 0;
         const lastUsedIndex = exerciseLastUsedIndex.get(exercise.id) || -1;
+        return usageCount === 1 && (i - lastUsedIndex) >= 3;
+      });
+      
+      if (onceUsedExercises.length > 0) {
+        selectedExercise = onceUsedExercises[0];
+      } else {
+        // Priority 3: Any exercise with adequate spacing
+        for (const exercise of shuffledExercises) {
+          const usageCount = exerciseUsageCount.get(exercise.id) || 0;
+          const lastUsedIndex = exerciseLastUsedIndex.get(exercise.id) || -1;
+          
+          if (usageCount < 2 && (i - lastUsedIndex) >= 3) {
+            selectedExercise = exercise;
+            break;
+          }
+        }
         
-        if (usageCount < 2 && (i - lastUsedIndex) >= 3) {
-          selectedExercise = exercise;
-          break;
+        // Final fallback: use any exercise
+        if (!selectedExercise) {
+          selectedExercise = shuffledExercises[i % shuffledExercises.length];
         }
       }
-    }
-    
-    // Fallback: if still no exercise found, use any available exercise
-    if (!selectedExercise) {
-      selectedExercise = shuffledExercises[i % shuffledExercises.length];
     }
     
     // Update tracking
