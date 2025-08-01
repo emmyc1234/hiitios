@@ -31,6 +31,7 @@ import sideLungesImage from "@assets/videoframe_3570_1754059364900.png";
 import calfRaisesImage from "@assets/videoframe_5743_1754059651143.png";
 import kickbacksImage1 from "@assets/videoframe_3231_1754060319975.png";
 import kickbacksImage2 from "@assets/videoframe_6103_1754060319981.png";
+import pikePushUpsImage from "@assets/videoframe_3696_1754060597535.png";
 import singleLegGluteBridgeImage from "@assets/videoframe_1385_1754055984520.png";
 import pushUpsImage from "@assets/videoframe_5905_1754056185240.png";
 import plankArmLiftsImage from "@assets/videoframe_1414_1754056764129.png";
@@ -300,6 +301,15 @@ export function ExerciseImage({ exerciseName, instructions }: ExerciseImageProps
               <img 
                 src={armCirclesImage} 
                 alt="Arm Circles Exercise"
+                className="w-full h-full object-cover"
+              />
+            </div>
+          ) : exerciseName === "Pike Push-ups" ? (
+            // Use actual pike push-ups image provided by user
+            <div className="w-32 h-20 mx-auto rounded-lg overflow-hidden shadow-md">
+              <img 
+                src={pikePushUpsImage} 
+                alt="Pike Push-ups Exercise"
                 className="w-full h-full object-cover"
               />
             </div>

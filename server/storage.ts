@@ -241,7 +241,7 @@ export class MemStorage implements IStorage {
         difficulty: 4,
         equipment: "none",
         instructions: ["Start in downward dog position", "Lower head toward ground", "Keep hips high", "Push back up", "Don't let hips sag", "Focus on shoulders"],
-        imageUrl: null,
+        imageUrl: "/attached_assets/videoframe_3696_1754060597535.png",
         animationSteps: ["Downward dog position", "Lower head down", "Keep hips high", "Push back up", "Control movement", "Repeat motion"]
       },
       {
