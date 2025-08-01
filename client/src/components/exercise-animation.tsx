@@ -30,6 +30,7 @@ import pushUpsImage from "@assets/videoframe_5905_1754056185240.png";
 import plankArmLiftsImage from "@assets/videoframe_1414_1754056764129.png";
 import diamondPushUpsImage from "@assets/videoframe_565_1754057036618.png";
 import armCirclesImage from "@assets/videoframe_4160_1754057151563.png";
+import verticalLegCrunchImage from "@assets/videoframe_5988_1754057911068.png";
 
 interface ExerciseImageProps {
   exerciseName: string;
@@ -53,11 +54,12 @@ const exerciseIcons: Record<string, any> = {
   "Pike Push-ups": ArrowUp,
   "Tricep Dips": ArrowDown,
   "Arm Circles": RotateCcw,
+  "Vertical Leg Crunch": Target,
 };
 
 // Exercise category colors
 const getCategoryColor = (exerciseName: string) => {
-  if (["Plank Hold", "Bicycle Crunches", "Russian Twists", "Dead Bug"].includes(exerciseName)) {
+  if (["Plank Hold", "Bicycle Crunches", "Russian Twists", "Dead Bug", "Vertical Leg Crunch"].includes(exerciseName)) {
     return "bg-accent/20 text-accent"; // Abs - green
   } else if (["Jump Squats", "Lunges", "Wall Sit", "Single Leg Glute Bridges"].includes(exerciseName)) {
     return "bg-warning/20 text-warning"; // Legs - yellow
@@ -149,6 +151,15 @@ export function ExerciseImage({ exerciseName, instructions }: ExerciseImageProps
               <img 
                 src={russianTwistsImage} 
                 alt="Russian Twists Exercise"
+                className="w-full h-full object-cover"
+              />
+            </div>
+          ) : exerciseName === "Vertical Leg Crunch" ? (
+            // Use actual vertical leg crunch image provided by user
+            <div className="w-32 h-20 mx-auto rounded-lg overflow-hidden shadow-md">
+              <img 
+                src={verticalLegCrunchImage} 
+                alt="Vertical Leg Crunch Exercise"
                 className="w-full h-full object-cover"
               />
             </div>
