@@ -193,6 +193,16 @@ export class MemStorage implements IStorage {
         imageUrl: "/attached_assets/videoframe_5743_1754059651143.png",
         animationSteps: ["Stand tall", "Rise up on toes", "Hold at the top", "Lower with control", "Repeat motion", "Keep balance"]
       },
+      {
+        name: "Kickbacks",
+        description: "Standing glute exercise that targets the posterior chain. Kick one leg back while maintaining balance and core stability.",
+        targetAreas: ["legs", "full-body"],
+        difficulty: 3,
+        equipment: "none",
+        instructions: ["Stand tall with feet hip-width apart", "Shift weight to one leg", "Kick the other leg straight back", "Squeeze glutes at the top", "Return to starting position", "Alternate legs"],
+        imageUrl: "/attached_assets/videoframe_3231_1754060319975.png",
+        animationSteps: ["Stand with balance", "Kick leg straight back", "Squeeze glutes", "Return controlled", "Switch legs", "Maintain posture"]
+      },
       // Upper Body Exercises
       {
         name: "Push-ups",
@@ -314,12 +324,16 @@ export class MemStorage implements IStorage {
 
   async createWorkout(insertWorkout: InsertWorkout): Promise<Workout> {
     const id = randomUUID();
-    const workout: Workout = { 
-      ...insertWorkout, 
-      id, 
+    const workout: Workout = {
+      ...insertWorkout,
+      id,
       completedAt: null,
       isFavorite: false,
-      createdAt: new Date()
+      createdAt: new Date(),
+      exercises: insertWorkout.exercises.map(exercise => ({
+        ...exercise,
+        instructions: Array.isArray(exercise.instructions) ? exercise.instructions : []
+      }))
     };
     this.workouts.set(id, workout);
     return workout;
@@ -351,6 +365,7 @@ export class MemStorage implements IStorage {
     const session: WorkoutSession = { 
       ...insertSession, 
       id, 
+      userId: insertSession.userId || null,
       completedAt: new Date() 
     };
     this.workoutSessions.set(id, session);

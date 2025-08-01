@@ -29,6 +29,8 @@ import wallSitImage from "@assets/wall_sit_exercise.png";
 import jumpLungesImage from "@assets/videoframe_2551_1754059303596.png";
 import sideLungesImage from "@assets/videoframe_3570_1754059364900.png";
 import calfRaisesImage from "@assets/videoframe_5743_1754059651143.png";
+import kickbacksImage1 from "@assets/videoframe_3231_1754060319975.png";
+import kickbacksImage2 from "@assets/videoframe_6103_1754060319981.png";
 import singleLegGluteBridgeImage from "@assets/videoframe_1385_1754055984520.png";
 import pushUpsImage from "@assets/videoframe_5905_1754056185240.png";
 import plankArmLiftsImage from "@assets/videoframe_1414_1754056764129.png";
@@ -63,13 +65,14 @@ const exerciseIcons: Record<string, any> = {
   "Jump Lunges": Zap,
   "Side Lunges": ArrowLeftRight,
   "Calf Raises": ArrowUp,
+  "Kickbacks": Move,
 };
 
 // Exercise category colors
 const getCategoryColor = (exerciseName: string) => {
   if (["Plank Hold", "Bicycle Crunches", "Russian Twists", "Dead Bug", "Vertical Leg Crunch"].includes(exerciseName)) {
     return "bg-accent/20 text-accent"; // Abs - green
-  } else if (["Jump Squats", "Lunges", "Wall Sit", "Single Leg Glute Bridges", "Single Leg Glute Bridges (Other Leg)", "Jump Lunges", "Side Lunges", "Calf Raises"].includes(exerciseName)) {
+  } else if (["Jump Squats", "Lunges", "Wall Sit", "Single Leg Glute Bridges", "Single Leg Glute Bridges (Other Leg)", "Jump Lunges", "Side Lunges", "Calf Raises", "Kickbacks"].includes(exerciseName)) {
     return "bg-warning/20 text-warning"; // Legs - yellow
   } else if (["Push-ups", "Pike Push-ups", "Tricep Dips", "Arm Circles"].includes(exerciseName)) {
     return "bg-secondary/20 text-secondary"; // Upper body - dark
@@ -225,6 +228,15 @@ export function ExerciseImage({ exerciseName, instructions }: ExerciseImageProps
               <img 
                 src={calfRaisesImage} 
                 alt="Calf Raises Exercise"
+                className="w-full h-full object-cover"
+              />
+            </div>
+          ) : exerciseName === "Kickbacks" ? (
+            // Use actual kickbacks images provided by user - alternating between two positions
+            <div className="w-32 h-20 mx-auto rounded-lg overflow-hidden shadow-md">
+              <img 
+                src={kickbacksImage1} 
+                alt="Kickbacks Exercise"
                 className="w-full h-full object-cover"
               />
             </div>
