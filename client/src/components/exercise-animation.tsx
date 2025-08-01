@@ -32,8 +32,8 @@ import calfRaisesImage from "@assets/videoframe_5743_1754059651143.png";
 import kickbacksImage1 from "@assets/videoframe_3231_1754060319975.png";
 import kickbacksImage2 from "@assets/videoframe_6103_1754060319981.png";
 import pikePushUpsImage from "@assets/videoframe_3696_1754060597535.png";
-import tricepExtensionsImage1 from "@assets/videoframe_245_1754060759018.png";
-import tricepExtensionsImage2 from "@assets/videoframe_2115_1754060759019.png";
+import tricepExtensionsImage1 from "@assets/videoframe_245_1754061092120.png";
+import tricepExtensionsImage2 from "@assets/videoframe_2115_1754061092124.png";
 import singleLegGluteBridgeImage from "@assets/videoframe_1385_1754055984520.png";
 import pushUpsImage from "@assets/videoframe_5905_1754056185240.png";
 import plankArmLiftsImage from "@assets/videoframe_1414_1754056764129.png";
@@ -316,13 +316,22 @@ export function ExerciseImage({ exerciseName, instructions }: ExerciseImageProps
               />
             </div>
           ) : exerciseName === "Bodyweight Tricep Extensions" ? (
-            // Use actual bodyweight tricep extensions image provided by user
-            <div className="w-32 h-20 mx-auto rounded-lg overflow-hidden shadow-md">
-              <img 
-                src={tricepExtensionsImage1} 
-                alt="Bodyweight Tricep Extensions Exercise"
-                className="w-full h-full object-cover"
-              />
+            // Use both bodyweight tricep extensions images provided by user
+            <div className="flex gap-1">
+              <div className="w-16 h-16 rounded-lg overflow-hidden shadow-md">
+                <img 
+                  src={tricepExtensionsImage1} 
+                  alt="Bodyweight Tricep Extensions Starting Position"
+                  className="w-full h-full object-cover"
+                />
+              </div>
+              <div className="w-16 h-16 rounded-lg overflow-hidden shadow-md">
+                <img 
+                  src={tricepExtensionsImage2} 
+                  alt="Bodyweight Tricep Extensions Lowered Position"
+                  className="w-full h-full object-cover"
+                />
+              </div>
             </div>
           ) : (
             <div className={`w-20 h-20 rounded-full flex items-center justify-center mx-auto ${colorClass}`}>

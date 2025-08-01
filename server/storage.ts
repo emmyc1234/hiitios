@@ -251,7 +251,7 @@ export class MemStorage implements IStorage {
         difficulty: 3,
         equipment: "none",
         instructions: ["Start in plank position against wall", "Place hands on ground", "Lean forward lowering body", "Keep elbows close to body", "Push back to starting position", "Focus on tricep engagement"],
-        imageUrl: "/attached_assets/videoframe_245_1754060759018.png",
+        imageUrl: "/attached_assets/videoframe_245_1754061092120.png",
         animationSteps: ["Plank against wall", "Lean forward", "Lower with control", "Keep elbows in", "Push back up", "Engage triceps"]
       },
       {
