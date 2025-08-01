@@ -236,15 +236,15 @@ export function ExerciseImage({ exerciseName, instructions }: ExerciseImageProps
             </div>
           ) : exerciseName === "Kickbacks" ? (
             // Use both kickbacks images provided by user showing different positions
-            <div className="flex gap-1">
-              <div className="w-16 h-10 rounded-lg overflow-hidden shadow-md">
+            <div className="flex gap-2">
+              <div className="w-32 h-20 rounded-lg overflow-hidden shadow-md">
                 <img 
                   src={kickbacksImage1} 
                   alt="Kickbacks Starting Position"
                   className="w-full h-full object-cover"
                 />
               </div>
-              <div className="w-16 h-10 rounded-lg overflow-hidden shadow-md">
+              <div className="w-32 h-20 rounded-lg overflow-hidden shadow-md">
                 <img 
                   src={kickbacksImage2} 
                   alt="Kickbacks Extended Position"
