@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">HIIT Workout</string>
+    <string name="title_activity_main">HIIT Workout</string>
+    <string name="package_name">com.hiitworkout.app</string>
+    <string name="custom_url_scheme">com.hiitworkout.app</string>
+</resources>

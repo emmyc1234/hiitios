@@ -96,6 +96,13 @@ Exercise visuals: User prefers simple icons and clean design over complex animat
 - **Database**: Production PostgreSQL database via Neon
 - **Environment Variables**: DATABASE_URL for database connection
 
+### Mobile App Deployment (Added August 1, 2025)
+- **Capacitor Integration**: Native iOS and Android apps created using Capacitor
+- **iOS Project**: Located in `/ios` folder, ready for Xcode and App Store deployment
+- **Android Project**: Located in `/android` folder, ready for Android Studio and Google Play deployment
+- **Mobile Build Process**: `npm run build` + `npx cap sync` to update mobile apps
+- **App Configuration**: Bundle ID `com.hiitworkout.app`, app name "HIIT Workout"
+
 ### Key Configuration Files
 - **drizzle.config.ts**: Database migration and schema configuration
 - **vite.config.ts**: Frontend build and development server setup
