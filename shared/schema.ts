@@ -71,6 +71,7 @@ export const workoutConfigSchema = z.object({
   duration: z.enum(["3", "5", "10", "15"]),
   targetArea: z.enum(["full-body", "legs", "abs", "upper-body"]),
   goal: z.enum(["fat-loss", "endurance", "strength"]),
+  exerciseDuration: z.enum(["45", "60", "75"]).default("60"), // seconds per exercise
 });
 
 // Exercise timing schema

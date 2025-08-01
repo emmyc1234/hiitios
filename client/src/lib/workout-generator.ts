@@ -1,8 +1,9 @@
 import { type WorkoutConfig, type Exercise, type WorkoutExercise } from "@shared/schema";
 
 export function generateWorkout(config: WorkoutConfig, exercises: Exercise[]): WorkoutExercise[] {
-  const { duration, targetArea, goal } = config;
+  const { duration, targetArea, goal, exerciseDuration } = config;
   const durationMinutes = parseInt(duration);
+  const customExerciseDuration = parseInt(exerciseDuration || "60");
   
   // Filter exercises by target area
   let filteredExercises = exercises.filter(exercise => 
@@ -17,25 +18,21 @@ export function generateWorkout(config: WorkoutConfig, exercises: Exercise[]): W
     );
   }
 
-  // Determine work/rest intervals based on goal
-  let workDuration: number;
+  // Determine rest intervals based on goal (work duration is customizable)
+  let workDuration: number = customExerciseDuration;
   let restDuration: number;
   
   switch (goal) {
     case "fat-loss":
-      workDuration = 30; // High intensity
-      restDuration = 10; // Short rest
+      restDuration = 10; // Short rest for high intensity
       break;
     case "endurance":
-      workDuration = 45; // Longer work periods
-      restDuration = 15; // Moderate rest
+      restDuration = 15; // Moderate rest for stamina building
       break;
     case "strength":
-      workDuration = 30; // Moderate work
       restDuration = 20; // Longer rest for recovery
       break;
     default:
-      workDuration = 30;
       restDuration = 15;
   }
 

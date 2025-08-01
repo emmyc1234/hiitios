@@ -41,7 +41,7 @@ Exercise visuals: User prefers simple icons and clean design over complex animat
 - **Workout Sessions Table**: Completed workout tracking and statistics
 
 ### Frontend Components
-- **Workout Setup**: Configuration interface for workout parameters
+- **Workout Setup**: Configuration interface for workout parameters including customizable exercise duration (45s, 60s, 75s)
 - **Workout Screen**: Active workout interface with exercise instructions and timer
 - **Rest Screen**: Rest period interface with countdown timer
 - **Workout Complete**: Post-workout summary and save functionality
@@ -54,9 +54,9 @@ Exercise visuals: User prefers simple icons and clean design over complex animat
 
 ## Data Flow
 
-1. **Workout Configuration**: User selects duration, target area, and fitness goal
-2. **Workout Generation**: Server generates personalized workout based on available exercises
-3. **Workout Execution**: Client manages workout flow with timers and progress tracking
+1. **Workout Configuration**: User selects duration, target area, fitness goal, and exercise duration (45s/60s/75s)
+2. **Workout Generation**: Server generates personalized workout based on available exercises and custom timing
+3. **Workout Execution**: Client manages workout flow with customizable exercise timers and progress tracking
 4. **Session Recording**: Completed workouts are saved to database with statistics
 5. **Progress Tracking**: User progress is updated with workout completion data
 

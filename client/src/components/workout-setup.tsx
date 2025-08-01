@@ -31,6 +31,7 @@ export function WorkoutSetup() {
   const [selectedDuration, setSelectedDuration] = useState<string>("10");
   const [selectedTarget, setSelectedTarget] = useState<string>("abs");
   const [selectedGoal, setSelectedGoal] = useState<string>("endurance");
+  const [selectedExerciseDuration, setSelectedExerciseDuration] = useState<string>("60");
 
   const { data: exercises = [], isLoading } = useQuery({
     queryKey: ["/api/exercises"],
@@ -46,6 +47,7 @@ export function WorkoutSetup() {
         duration: selectedDuration as any,
         targetArea: selectedTarget as any,
         goal: selectedGoal as any,
+        exerciseDuration: selectedExerciseDuration as any,
       };
 
       const workout = generateWorkout(config, exercises);
@@ -98,6 +100,12 @@ export function WorkoutSetup() {
       description: "Power moves, muscle building",
       icon: Zap 
     },
+  ];
+
+  const exerciseDurationOptions = [
+    { value: "45", label: "45", sublabel: "sec" },
+    { value: "60", label: "60", sublabel: "sec" },
+    { value: "75", label: "75", sublabel: "sec" },
   ];
 
   if (isLoading) {
@@ -163,6 +171,31 @@ export function WorkoutSetup() {
                 onClick={() => setSelectedDuration(option.value)}
               >
                 <div className="text-2xl font-bold">{option.label}</div>
+                <div className="text-sm">{option.sublabel}</div>
+              </Button>
+            ))}
+          </div>
+        </div>
+
+        {/* Exercise Duration Selector */}
+        <div className="space-y-4">
+          <h3 className="text-lg font-semibold text-secondary dark:text-white flex items-center">
+            <Clock className="text-primary mr-2" size={20} />
+            Exercise Length
+          </h3>
+          <div className="grid grid-cols-3 gap-3">
+            {exerciseDurationOptions.map((option) => (
+              <Button
+                key={option.value}
+                variant={selectedExerciseDuration === option.value ? "default" : "outline"}
+                className={`h-auto p-4 flex-col ${
+                  selectedExerciseDuration === option.value
+                    ? "bg-primary/10 border-primary text-primary hover:bg-primary/15"
+                    : "bg-white dark:bg-gray-800 hover:border-primary hover:text-primary dark:text-white"
+                }`}
+                onClick={() => setSelectedExerciseDuration(option.value)}
+              >
+                <div className="text-xl font-bold">{option.label}</div>
                 <div className="text-sm">{option.sublabel}</div>
               </Button>
             ))}

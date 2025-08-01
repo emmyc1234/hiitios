@@ -198,7 +198,7 @@ export class MemStorage implements IStorage {
 
     exercisesData.forEach(exercise => {
       const id = randomUUID();
-      this.exercises.set(id, { ...exercise, id });
+      this.exercises.set(id, { ...exercise, id } as Exercise);
     });
   }
 
@@ -247,7 +247,7 @@ export class MemStorage implements IStorage {
 
   async createExercise(insertExercise: InsertExercise): Promise<Exercise> {
     const id = randomUUID();
-    const exercise: Exercise = { ...insertExercise, id };
+    const exercise: Exercise = { ...insertExercise, id } as Exercise;
     this.exercises.set(id, exercise);
     return exercise;
   }
@@ -291,7 +291,7 @@ export class MemStorage implements IStorage {
     const session: WorkoutSession = { 
       ...insertSession, 
       id, 
-      completedAt: new Date()
+      completedAt: new Date() 
     };
     this.workoutSessions.set(id, session);
     return session;
