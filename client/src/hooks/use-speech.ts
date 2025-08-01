@@ -49,7 +49,7 @@ export function useSpeech() {
       .replace(/-/g, ' ') // Replace hyphens with spaces
       .toLowerCase();
     
-    speak(`Next exercise: ${cleanName}`, { rate: 0.9, volume: 0.9 });
+    speak(cleanName, { rate: 0.9, volume: 0.9 });
   }, [speak]);
 
   const announceCountdown = useCallback((seconds: number) => {
