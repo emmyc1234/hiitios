@@ -183,6 +183,16 @@ export class MemStorage implements IStorage {
         imageUrl: "/attached_assets/videoframe_3570_1754059364900.png",
         animationSteps: ["Stand hip-width apart", "Step wide to side", "Lower into side lunge", "Push back to center", "Switch sides", "Control movement"]
       },
+      {
+        name: "Calf Raises",
+        description: "Rise up on toes to work calf muscles. For more challenge, try doing it on one leg and alternating.",
+        targetAreas: ["legs", "full-body"],
+        difficulty: 1,
+        equipment: "none",
+        instructions: ["Stand with feet hip-width apart", "Rise up on your toes", "Hold briefly at the top", "Lower slowly back down", "Keep core engaged", "For challenge: alternate single leg"],
+        imageUrl: "/attached_assets/videoframe_5743_1754059651143.png",
+        animationSteps: ["Stand tall", "Rise up on toes", "Hold at the top", "Lower with control", "Repeat motion", "Keep balance"]
+      },
       // Upper Body Exercises
       {
         name: "Push-ups",
