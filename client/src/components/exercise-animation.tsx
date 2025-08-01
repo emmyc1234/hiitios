@@ -32,6 +32,8 @@ import calfRaisesImage from "@assets/videoframe_5743_1754059651143.png";
 import kickbacksImage1 from "@assets/videoframe_3231_1754060319975.png";
 import kickbacksImage2 from "@assets/videoframe_6103_1754060319981.png";
 import pikePushUpsImage from "@assets/videoframe_3696_1754060597535.png";
+import tricepExtensionsImage1 from "@assets/videoframe_245_1754060759018.png";
+import tricepExtensionsImage2 from "@assets/videoframe_2115_1754060759019.png";
 import singleLegGluteBridgeImage from "@assets/videoframe_1385_1754055984520.png";
 import pushUpsImage from "@assets/videoframe_5905_1754056185240.png";
 import plankArmLiftsImage from "@assets/videoframe_1414_1754056764129.png";
@@ -60,7 +62,7 @@ const exerciseIcons: Record<string, any> = {
   "Single Leg Glute Bridges (Other Leg)": Activity,
   "Push-ups": Dumbbell,
   "Pike Push-ups": ArrowUp,
-  "Tricep Dips": ArrowDown,
+  "Bodyweight Tricep Extensions": ArrowDown,
   "Arm Circles": RotateCcw,
   "Vertical Leg Crunch": Target,
   "Jump Lunges": Zap,
@@ -75,7 +77,7 @@ const getCategoryColor = (exerciseName: string) => {
     return "bg-accent/20 text-accent"; // Abs - green
   } else if (["Jump Squats", "Lunges", "Wall Sit", "Single Leg Glute Bridges", "Single Leg Glute Bridges (Other Leg)", "Jump Lunges", "Side Lunges", "Calf Raises", "Kickbacks"].includes(exerciseName)) {
     return "bg-warning/20 text-warning"; // Legs - yellow
-  } else if (["Push-ups", "Pike Push-ups", "Tricep Dips", "Arm Circles"].includes(exerciseName)) {
+  } else if (["Push-ups", "Pike Push-ups", "Bodyweight Tricep Extensions", "Arm Circles"].includes(exerciseName)) {
     return "bg-secondary/20 text-secondary"; // Upper body - dark
   } else {
     return "bg-primary/20 text-primary"; // Full body - orange
@@ -310,6 +312,15 @@ export function ExerciseImage({ exerciseName, instructions }: ExerciseImageProps
               <img 
                 src={pikePushUpsImage} 
                 alt="Pike Push-ups Exercise"
+                className="w-full h-full object-cover"
+              />
+            </div>
+          ) : exerciseName === "Bodyweight Tricep Extensions" ? (
+            // Use actual bodyweight tricep extensions image provided by user
+            <div className="w-32 h-20 mx-auto rounded-lg overflow-hidden shadow-md">
+              <img 
+                src={tricepExtensionsImage1} 
+                alt="Bodyweight Tricep Extensions Exercise"
                 className="w-full h-full object-cover"
               />
             </div>

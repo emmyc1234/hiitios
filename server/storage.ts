@@ -245,14 +245,14 @@ export class MemStorage implements IStorage {
         animationSteps: ["Downward dog position", "Lower head down", "Keep hips high", "Push back up", "Control movement", "Repeat motion"]
       },
       {
-        name: "Tricep Dips",
-        description: "Use chair or bench, lower body by bending arms, push back up to work triceps.",
+        name: "Bodyweight Tricep Extensions",
+        description: "Plank position against wall, lean forward and push back using triceps. Great equipment-free tricep exercise.",
         targetAreas: ["upper-body", "full-body"],
         difficulty: 3,
-        equipment: "chair",
-        instructions: ["Sit on edge of chair", "Hands on seat beside hips", "Slide forward off chair", "Lower by bending arms", "Push back up", "Keep elbows close"],
-        imageUrl: null,
-        animationSteps: ["Sit on chair edge", "Hands beside hips", "Slide forward", "Lower body down", "Push back up", "Keep elbows in"]
+        equipment: "none",
+        instructions: ["Start in plank position against wall", "Place hands on ground", "Lean forward lowering body", "Keep elbows close to body", "Push back to starting position", "Focus on tricep engagement"],
+        imageUrl: "/attached_assets/videoframe_245_1754060759018.png",
+        animationSteps: ["Plank against wall", "Lean forward", "Lower with control", "Keep elbows in", "Push back up", "Engage triceps"]
       },
       {
         name: "Arm Circles",
