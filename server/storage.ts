@@ -165,14 +165,14 @@ export class MemStorage implements IStorage {
         animationSteps: ["Plank position", "Lower chest down", "Keep body straight", "Push back up", "Control movement", "Repeat motion"]
       },
       {
-        name: "Shoulder Taps",
-        description: "Hold plank position and alternate tapping each shoulder with opposite hand while keeping hips stable.",
+        name: "Plank with Arm Lifts",
+        description: "Hold plank position and alternate lifting each arm forward while keeping body stable and core engaged.",
         targetAreas: ["upper-body"],
         difficulty: 3,
         equipment: "none",
-        instructions: ["Start in plank position", "Keep hips stable", "Tap left shoulder with right hand", "Return to plank", "Tap right shoulder with left hand", "Keep core engaged"],
+        instructions: ["Start in plank position", "Keep core tight", "Lift right arm forward", "Hold briefly", "Return to plank", "Alternate with left arm"],
         imageUrl: null,
-        animationSteps: ["Plank position", "Tap left shoulder", "Return to plank", "Tap right shoulder", "Return to plank", "Keep alternating"]
+        animationSteps: ["Plank position", "Lift right arm", "Hold steady", "Return to plank", "Lift left arm", "Keep alternating"]
       },
       {
         name: "Tricep Dips",

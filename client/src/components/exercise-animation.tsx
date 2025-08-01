@@ -27,6 +27,7 @@ import lungesImage from "@assets/videoframe_5200_1753807873079.png";
 import wallSitImage from "@assets/wall_sit_exercise.png";
 import singleLegGluteBridgeImage from "@assets/videoframe_1385_1754055984520.png";
 import pushUpsImage from "@assets/videoframe_5905_1754056185240.png";
+import plankArmLiftsImage from "@assets/videoframe_1414_1754056764129.png";
 
 interface ExerciseImageProps {
   exerciseName: string;
@@ -206,6 +207,15 @@ export function ExerciseImage({ exerciseName, instructions }: ExerciseImageProps
                 className="w-full h-full object-cover"
               />
             </div>
+          ) : exerciseName === "Plank with Arm Lifts" ? (
+            // Use actual plank with arm lifts image provided by user
+            <div className="w-32 h-20 mx-auto rounded-lg overflow-hidden shadow-md">
+              <img 
+                src={plankArmLiftsImage} 
+                alt="Plank with Arm Lifts Exercise"
+                className="w-full h-full object-cover"
+              />
+            </div>
           ) : (
             <div className={`w-20 h-20 rounded-full flex items-center justify-center mx-auto ${colorClass}`}>
               <IconComponent size={40} />
@@ -318,6 +328,14 @@ export function ExerciseImage({ exerciseName, instructions }: ExerciseImageProps
               <div className="mt-3 p-2 bg-primary/10 rounded-lg">
                 <div className="text-xs text-primary font-medium">
                   Tip: Keep your body straight and lower chest to the ground!
+                </div>
+              </div>
+            )}
+            
+            {exerciseName === "Plank with Arm Lifts" && (
+              <div className="mt-3 p-2 bg-secondary/10 rounded-lg">
+                <div className="text-xs text-secondary font-medium">
+                  Tip: Keep hips stable and core tight while lifting arms!
                 </div>
               </div>
             )}
