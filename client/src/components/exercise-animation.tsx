@@ -55,12 +55,6 @@ const exerciseIcons: Record<string, any> = {
   "Tricep Dips": ArrowDown,
   "Arm Circles": RotateCcw,
   "Vertical Leg Crunch": Target,
-  "High Knees": ArrowUp,
-  "Squat Jumps": Zap,
-  "Bear Crawl": Move,
-  "Star Jumps": Flame,
-  "Plank Jacks": Activity,
-  "Squat Thrusts": Heart,
 };
 
 // Exercise category colors

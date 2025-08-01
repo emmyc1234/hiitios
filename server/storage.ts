@@ -71,66 +71,6 @@ export class MemStorage implements IStorage {
         imageUrl: null,
         animationSteps: ["Feet together, arms down", "Jump legs apart, arms up", "Return to start", "Repeat motion", "Keep rhythm", "Stay light on feet"]
       },
-      {
-        name: "High Knees",
-        description: "Run in place bringing knees up as high as possible toward chest, pumping arms.",
-        targetAreas: ["full-body"],
-        difficulty: 3,
-        equipment: "none",
-        instructions: ["Stand with feet hip-width apart", "Lift right knee to chest", "Quickly switch to left knee", "Pump arms as you run in place", "Keep core engaged", "Maintain quick pace"],
-        imageUrl: null,
-        animationSteps: ["Stand ready", "Right knee up", "Left knee up", "Pump arms", "Quick rhythm", "Stay on balls of feet"]
-      },
-      {
-        name: "Squat Jumps",
-        description: "Perform squat then jump up explosively, landing softly back into squat position.",
-        targetAreas: ["full-body"],
-        difficulty: 4,
-        equipment: "none",
-        instructions: ["Start in squat position", "Lower into deep squat", "Jump up explosively", "Land softly on balls of feet", "Immediately squat again", "Keep chest up throughout"],
-        imageUrl: null,
-        animationSteps: ["Squat position", "Deep squat", "Explosive jump", "Soft landing", "Back to squat", "Continuous motion"]
-      },
-      {
-        name: "Bear Crawl",
-        description: "Crawl forward on hands and feet with knees slightly off ground, engaging core.",
-        targetAreas: ["full-body"],
-        difficulty: 4,
-        equipment: "none",
-        instructions: ["Start on hands and knees", "Lift knees 2 inches off ground", "Move right hand and left foot forward", "Switch to left hand and right foot", "Keep core tight", "Maintain low position"],
-        imageUrl: null,
-        animationSteps: ["Hands and knees", "Lift knees slightly", "Right hand left foot", "Left hand right foot", "Core engaged", "Stay low"]
-      },
-      {
-        name: "Star Jumps",
-        description: "Jump up spreading arms and legs wide into star shape, then return to start.",
-        targetAreas: ["full-body"],
-        difficulty: 3,
-        equipment: "none",
-        instructions: ["Start with feet together", "Jump up explosively", "Spread arms and legs wide", "Land softly with feet together", "Keep movements controlled", "Engage core throughout"],
-        imageUrl: null,
-        animationSteps: ["Feet together", "Jump up", "Star shape", "Control landing", "Return to start", "Smooth rhythm"]
-      },
-      {
-        name: "Plank Jacks",
-        description: "In plank position, jump feet apart and together like jumping jacks.",
-        targetAreas: ["full-body"],
-        difficulty: 4,
-        equipment: "none",
-        instructions: ["Start in plank position", "Jump feet apart", "Jump feet back together", "Keep hips level", "Maintain plank form", "Land softly on balls of feet"],
-        imageUrl: null,
-        animationSteps: ["Plank position", "Jump feet apart", "Jump feet together", "Keep core tight", "Maintain form", "Controlled movement"]
-      },
-      {
-        name: "Squat Thrusts",
-        description: "From standing, squat down, jump back to plank, jump feet forward, stand up.",
-        targetAreas: ["full-body"],
-        difficulty: 4,
-        equipment: "none",
-        instructions: ["Start standing", "Squat down, hands on floor", "Jump feet back to plank", "Jump feet forward to squat", "Stand up", "Repeat quickly"],
-        imageUrl: null,
-        animationSteps: ["Standing", "Squat hands down", "Jump back plank", "Jump feet in", "Stand up", "Continuous flow"]
-      },
       // Abs Exercises
       {
         name: "Plank Hold",
