@@ -11,6 +11,7 @@ import {
   Home
 } from "lucide-react";
 import { useWorkoutTimer } from "@/hooks/use-workout-timer";
+import { useSpeech } from "@/hooks/use-speech";
 import { ExerciseImage } from "@/components/exercise-animation";
 import { type WorkoutExercise } from "@shared/schema";
 
@@ -36,14 +37,35 @@ export function WorkoutScreen({
   onReturnHome,
 }: WorkoutScreenProps) {
   const [isPaused, setIsPaused] = useState(false);
+  const [hasAnnouncedExercise, setHasAnnouncedExercise] = useState(false);
   const { timeRemaining, progress, isActive, start, pause, resume, skip } = useWorkoutTimer({
     duration: exercise.workDuration,
     onComplete: onExerciseComplete,
   });
+  const { announceExercise, announceCountdown, stop: stopSpeech } = useSpeech();
 
   useEffect(() => {
     start();
-  }, [start]);
+    // Announce exercise name when starting
+    if (!hasAnnouncedExercise) {
+      setTimeout(() => {
+        announceExercise(exercise.name);
+      }, 500); // Small delay to let UI settle
+      setHasAnnouncedExercise(true);
+    }
+  }, [start, exercise.name, announceExercise, hasAnnouncedExercise]);
+
+  // Announce countdown for final seconds
+  useEffect(() => {
+    if (isActive && !isPaused) {
+      announceCountdown(timeRemaining);
+    }
+  }, [timeRemaining, isActive, isPaused, announceCountdown]);
+
+  // Reset announcement flag when exercise changes
+  useEffect(() => {
+    setHasAnnouncedExercise(false);
+  }, [exercise.name]);
 
   const handlePauseResume = () => {
     if (isPaused) {
@@ -55,6 +77,7 @@ export function WorkoutScreen({
   };
 
   const handleSkip = () => {
+    stopSpeech(); // Stop any ongoing speech
     skip();
   };
 

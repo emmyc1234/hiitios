@@ -42,9 +42,10 @@ Exercise visuals: User prefers simple icons and clean design over complex animat
 
 ### Frontend Components
 - **Workout Setup**: Configuration interface for workout parameters including customizable exercise duration (45s, 60s, 75s)
-- **Workout Screen**: Active workout interface with exercise instructions, timer, and home button for mid-workout exit
-- **Rest Screen**: Rest period interface with countdown timer and home button for mid-workout exit
+- **Workout Screen**: Active workout interface with exercise instructions, timer, home button, and voice announcements for exercise names and countdown
+- **Rest Screen**: Rest period interface with countdown timer, home button, and voice announcements for rest periods and upcoming exercises
 - **Workout Complete**: Post-workout summary and save functionality
+- **Speech System**: Text-to-speech integration for exercise names, countdowns, and workout transitions using Web Speech API
 
 ### Backend Services
 - **Storage Layer**: Abstracted storage interface with in-memory implementation for development

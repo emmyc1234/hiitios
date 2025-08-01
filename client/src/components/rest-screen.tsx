@@ -1,8 +1,9 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
-import { Home } from "lucide-react";
+import { Home, SkipForward } from "lucide-react";
 import { useWorkoutTimer } from "@/hooks/use-workout-timer";
+import { useSpeech } from "@/hooks/use-speech";
 import { type WorkoutExercise } from "@shared/schema";
 
 interface RestScreenProps {
@@ -13,14 +14,33 @@ interface RestScreenProps {
 }
 
 export function RestScreen({ nextExercise, restDuration, onRestComplete, onReturnHome }: RestScreenProps) {
+  const [hasAnnouncedNext, setHasAnnouncedNext] = useState(false);
   const { timeRemaining, progress, start, skip } = useWorkoutTimer({
     duration: restDuration,
     onComplete: onRestComplete,
   });
+  const { announceTransition, announceCountdown, stop: stopSpeech } = useSpeech();
 
   useEffect(() => {
     start();
-  }, [start]);
+    // Announce rest period and next exercise
+    if (!hasAnnouncedNext) {
+      setTimeout(() => {
+        announceTransition("Rest time");
+        if (nextExercise) {
+          setTimeout(() => {
+            announceTransition(`Get ready for ${nextExercise.name.toLowerCase()}`);
+          }, 1500);
+        }
+      }, 500);
+      setHasAnnouncedNext(true);
+    }
+  }, [start, nextExercise, announceTransition, hasAnnouncedNext]);
+
+  // Announce countdown for final seconds
+  useEffect(() => {
+    announceCountdown(timeRemaining);
+  }, [timeRemaining, announceCountdown]);
 
   const formatTime = (seconds: number) => {
     return Math.ceil(seconds).toString();
@@ -90,10 +110,14 @@ export function RestScreen({ nextExercise, restDuration, onRestComplete, onRetur
 
         {/* Skip Rest Button */}
         <Button 
-          className="bg-white text-accent font-bold py-3 px-8 rounded-xl hover:bg-gray-100"
-          onClick={skip}
+          className="bg-white text-accent font-bold py-3 px-8 rounded-xl hover:bg-gray-100 flex items-center space-x-2"
+          onClick={() => {
+            stopSpeech(); // Stop any ongoing speech
+            skip();
+          }}
         >
-          Skip Rest
+          <SkipForward size={16} />
+          <span>Skip Rest</span>
         </Button>
       </div>
     </div>
