@@ -28,6 +28,7 @@ import wallSitImage from "@assets/wall_sit_exercise.png";
 import singleLegGluteBridgeImage from "@assets/videoframe_1385_1754055984520.png";
 import pushUpsImage from "@assets/videoframe_5905_1754056185240.png";
 import plankArmLiftsImage from "@assets/videoframe_1414_1754056764129.png";
+import diamondPushUpsImage from "@assets/videoframe_565_1754057036618.png";
 
 interface ExerciseImageProps {
   exerciseName: string;
@@ -216,6 +217,15 @@ export function ExerciseImage({ exerciseName, instructions }: ExerciseImageProps
                 className="w-full h-full object-cover"
               />
             </div>
+          ) : exerciseName === "Diamond Push-ups" ? (
+            // Use actual diamond push-ups image provided by user
+            <div className="w-32 h-20 mx-auto rounded-lg overflow-hidden shadow-md">
+              <img 
+                src={diamondPushUpsImage} 
+                alt="Diamond Push-ups Exercise"
+                className="w-full h-full object-cover"
+              />
+            </div>
           ) : (
             <div className={`w-20 h-20 rounded-full flex items-center justify-center mx-auto ${colorClass}`}>
               <IconComponent size={40} />
@@ -336,6 +346,14 @@ export function ExerciseImage({ exerciseName, instructions }: ExerciseImageProps
               <div className="mt-3 p-2 bg-secondary/10 rounded-lg">
                 <div className="text-xs text-secondary font-medium">
                   Tip: Keep hips stable and core tight while lifting arms!
+                </div>
+              </div>
+            )}
+            
+            {exerciseName === "Diamond Push-ups" && (
+              <div className="mt-3 p-2 bg-destructive/10 rounded-lg">
+                <div className="text-xs text-destructive font-medium">
+                  Tip: Form diamond with hands, keep elbows close! Modify on knees if needed.
                 </div>
               </div>
             )}
