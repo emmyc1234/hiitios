@@ -163,6 +163,16 @@ export class MemStorage implements IStorage {
         imageUrl: null,
         animationSteps: ["Lie on back", "Lift one leg", "Push through heel", "Lift hips up", "Squeeze glutes", "Lower slowly"]
       },
+      {
+        name: "Jump Lunges",
+        description: "Alternate lunges with explosive jumps between each leg switch for high-intensity cardio.",
+        targetAreas: ["legs", "full-body"],
+        difficulty: 4,
+        equipment: "none",
+        instructions: ["Start in lunge position", "Jump explosively up", "Switch legs in mid-air", "Land in opposite lunge", "Repeat alternating", "Keep chest up"],
+        imageUrl: "/attached_assets/videoframe_2551_1754059303596.png",
+        animationSteps: ["Lunge position", "Jump explosively", "Switch legs mid-air", "Land opposite lunge", "Continue alternating", "Control landings"]
+      },
       // Upper Body Exercises
       {
         name: "Push-ups",

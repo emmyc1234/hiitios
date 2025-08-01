@@ -25,6 +25,7 @@ import jumpSquatImage1 from "@assets/videoframe_5572_1753807055637.png";
 import jumpSquatImage2 from "@assets/videoframe_3804_1753807055640.png";
 import lungesImage from "@assets/videoframe_5200_1753807873079.png";
 import wallSitImage from "@assets/wall_sit_exercise.png";
+import jumpLungesImage from "@assets/videoframe_2551_1754059303596.png";
 import singleLegGluteBridgeImage from "@assets/videoframe_1385_1754055984520.png";
 import pushUpsImage from "@assets/videoframe_5905_1754056185240.png";
 import plankArmLiftsImage from "@assets/videoframe_1414_1754056764129.png";
@@ -55,13 +56,14 @@ const exerciseIcons: Record<string, any> = {
   "Tricep Dips": ArrowDown,
   "Arm Circles": RotateCcw,
   "Vertical Leg Crunch": Target,
+  "Jump Lunges": Zap,
 };
 
 // Exercise category colors
 const getCategoryColor = (exerciseName: string) => {
   if (["Plank Hold", "Bicycle Crunches", "Russian Twists", "Dead Bug", "Vertical Leg Crunch"].includes(exerciseName)) {
     return "bg-accent/20 text-accent"; // Abs - green
-  } else if (["Jump Squats", "Lunges", "Wall Sit", "Single Leg Glute Bridges"].includes(exerciseName)) {
+  } else if (["Jump Squats", "Lunges", "Wall Sit", "Single Leg Glute Bridges", "Jump Lunges"].includes(exerciseName)) {
     return "bg-warning/20 text-warning"; // Legs - yellow
   } else if (["Push-ups", "Pike Push-ups", "Tricep Dips", "Arm Circles"].includes(exerciseName)) {
     return "bg-secondary/20 text-secondary"; // Upper body - dark
@@ -190,6 +192,15 @@ export function ExerciseImage({ exerciseName, instructions }: ExerciseImageProps
               <img 
                 src={lungesImage} 
                 alt="Lunges Exercise"
+                className="w-full h-full object-cover"
+              />
+            </div>
+          ) : exerciseName === "Jump Lunges" ? (
+            // Use actual jump lunges image provided by user
+            <div className="w-32 h-20 mx-auto rounded-lg overflow-hidden shadow-md">
+              <img 
+                src={jumpLungesImage} 
+                alt="Jump Lunges Exercise"
                 className="w-full h-full object-cover"
               />
             </div>
