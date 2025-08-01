@@ -165,14 +165,14 @@ export class MemStorage implements IStorage {
         animationSteps: ["Plank position", "Lower chest down", "Keep body straight", "Push back up", "Control movement", "Repeat motion"]
       },
       {
-        name: "Pike Push-ups",
-        description: "Start in downward dog position, lower head toward ground between hands, push back up.",
-        targetAreas: ["upper-body"],
-        difficulty: 4,
+        name: "High Knees",
+        description: "Run in place bringing knees up high toward chest, pump arms for added intensity.",
+        targetAreas: ["upper-body", "full-body"],
+        difficulty: 2,
         equipment: "none",
-        instructions: ["Start in downward dog", "Keep hips high", "Lower head toward hands", "Push back up", "Keep legs straight", "Focus on shoulders"],
+        instructions: ["Stand with feet hip-width apart", "Run in place", "Bring knees up high", "Pump arms actively", "Keep chest up", "Maintain quick pace"],
         imageUrl: null,
-        animationSteps: ["Downward dog position", "Keep hips high", "Lower head down", "Push back up", "Maintain pike", "Focus on shoulders"]
+        animationSteps: ["Stand ready", "Lift right knee high", "Switch to left knee", "Pump arms", "Keep quick rhythm", "Stay light on feet"]
       },
       {
         name: "Tricep Dips",
