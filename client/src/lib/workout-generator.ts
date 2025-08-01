@@ -18,6 +18,44 @@ export function generateWorkout(config: WorkoutConfig, exercises: Exercise[]): W
     );
   }
 
+  // Sort exercises based on fitness goal for optimal training effect
+  filteredExercises = filteredExercises.sort((a, b) => {
+    switch (goal) {
+      case "fat-loss":
+        // Prioritize high-intensity compound movements and cardio-based exercises
+        const fatLossPriority = (exercise: Exercise) => {
+          if (exercise.name.includes("Burpees") || exercise.name.includes("Mountain Climbers") || 
+              exercise.name.includes("Jump") || exercise.name.includes("High Knees")) return 1;
+          if (exercise.difficulty >= 3) return 2; // High intensity exercises
+          return 3;
+        };
+        return fatLossPriority(a) - fatLossPriority(b);
+        
+      case "strength":
+        // Prioritize higher difficulty exercises and compound movements
+        const strengthPriority = (exercise: Exercise) => {
+          if (exercise.difficulty >= 4) return 1; // Hardest exercises first
+          if (exercise.name.includes("Push-ups") || exercise.name.includes("Squats") || 
+              exercise.name.includes("Lunges") || exercise.name.includes("Pike")) return 2;
+          return 3;
+        };
+        return strengthPriority(a) - strengthPriority(b);
+        
+      case "endurance":
+        // Mix of moderate intensity with focus on sustained effort exercises
+        const endurancePriority = (exercise: Exercise) => {
+          if (exercise.difficulty === 2 || exercise.difficulty === 3) return 1; // Moderate intensity
+          if (exercise.name.includes("Plank") || exercise.name.includes("Wall Sit") || 
+              exercise.name.includes("Calf Raises")) return 2; // Endurance-focused
+          return 3;
+        };
+        return endurancePriority(a) - endurancePriority(b);
+        
+      default:
+        return 0;
+    }
+  });
+
   // Determine rest intervals based on goal (work duration is customizable)
   let workDuration: number = customExerciseDuration;
   let restDuration: number;
@@ -46,8 +84,30 @@ export function generateWorkout(config: WorkoutConfig, exercises: Exercise[]): W
   const exerciseUsageCount = new Map<string, number>();
   const exerciseLastUsedIndex = new Map<string, number>();
   
-  // Shuffle exercises for variety
-  const shuffledExercises = [...filteredExercises].sort(() => Math.random() - 0.5);
+  // Apply goal-specific workout structure
+  let shuffledExercises: Exercise[];
+  
+  switch (goal) {
+    case "fat-loss":
+      // Fat loss: High intensity circuits with minimal rest - front-load hardest exercises
+      shuffledExercises = [...filteredExercises].sort(() => Math.random() - 0.5);
+      break;
+      
+    case "strength":
+      // Strength: Start with compound movements, progress to isolation
+      const compoundFirst = filteredExercises.sort((a, b) => b.difficulty - a.difficulty);
+      shuffledExercises = [...compoundFirst];
+      break;
+      
+    case "endurance":
+      // Endurance: Alternate high and moderate intensity for sustained effort
+      const endurancePattern = [...filteredExercises].sort(() => Math.random() - 0.5);
+      shuffledExercises = endurancePattern;
+      break;
+      
+    default:
+      shuffledExercises = [...filteredExercises].sort(() => Math.random() - 0.5);
+  }
   
   for (let i = 0; i < maxExercises; i++) {
     let selectedExercise: Exercise | null = null;
@@ -97,14 +157,33 @@ export function generateWorkout(config: WorkoutConfig, exercises: Exercise[]): W
   // Generate workout exercises with special handling for Single Leg Glute Bridges
   const workoutExercises: WorkoutExercise[] = [];
   
-  selectedExercises.forEach(exercise => {
+  selectedExercises.forEach((exercise, index) => {
+    // Apply goal-specific rest duration adjustments
+    let exerciseRestDuration = restDuration;
+    
+    if (goal === "fat-loss") {
+      // Fat loss: Even shorter rest for high-intensity exercises
+      if (exercise.difficulty >= 4) {
+        exerciseRestDuration = Math.max(5, restDuration - 5);
+      }
+    } else if (goal === "strength") {
+      // Strength: Longer rest for compound movements
+      if (exercise.difficulty >= 4 || exercise.name.includes("Push-ups") || 
+          exercise.name.includes("Squats") || exercise.name.includes("Pike")) {
+        exerciseRestDuration = restDuration + 10;
+      }
+    } else if (goal === "endurance") {
+      // Endurance: Vary rest periods to build stamina
+      exerciseRestDuration = index % 2 === 0 ? restDuration : restDuration + 5;
+    }
+    
     // Add the main exercise
     workoutExercises.push({
       exerciseId: exercise.id,
       name: exercise.name,
       description: exercise.description,
       workDuration,
-      restDuration,
+      restDuration: exerciseRestDuration,
       instructions: exercise.instructions,
     });
     
