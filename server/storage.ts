@@ -173,6 +173,16 @@ export class MemStorage implements IStorage {
         imageUrl: "/attached_assets/videoframe_2551_1754059303596.png",
         animationSteps: ["Lunge position", "Jump explosively", "Switch legs mid-air", "Land opposite lunge", "Continue alternating", "Control landings"]
       },
+      {
+        name: "Side Lunges",
+        description: "Step to one side into a deep lunge, then return to center. Great for inner thighs and lateral movement.",
+        targetAreas: ["legs", "full-body"],
+        difficulty: 3,
+        equipment: "none",
+        instructions: ["Stand with feet hip-width apart", "Step wide to right side", "Lower into side lunge", "Push through right heel to return", "Alternate sides", "Keep chest up"],
+        imageUrl: "/attached_assets/videoframe_3570_1754059364900.png",
+        animationSteps: ["Stand hip-width apart", "Step wide to side", "Lower into side lunge", "Push back to center", "Switch sides", "Control movement"]
+      },
       // Upper Body Exercises
       {
         name: "Push-ups",
