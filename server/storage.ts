@@ -93,6 +93,16 @@ export class MemStorage implements IStorage {
         animationSteps: ["Lie on back", "Hands behind head", "Right elbow to left knee", "Switch sides", "Left elbow to right knee", "Continue cycling motion"]
       },
       {
+        name: "Vertical Leg Crunch",
+        description: "Legs extended vertically, crunch upper body toward legs for intense ab workout.",
+        targetAreas: ["abs"],
+        difficulty: 3,
+        equipment: "none",
+        instructions: ["Lie on back", "Extend legs straight up", "Hands behind head", "Crunch upper body toward legs", "Keep legs vertical", "Focus on upper abs"],
+        imageUrl: null,
+        animationSteps: ["Lie flat on back", "Legs straight up", "Hands behind head", "Crunch up toward legs", "Hold briefly", "Lower with control"]
+      },
+      {
         name: "Russian Twists",
         description: "Sit with knees bent, lean back slightly and rotate your torso from side to side.",
         targetAreas: ["abs"],
