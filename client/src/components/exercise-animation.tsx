@@ -54,6 +54,7 @@ const exerciseIcons: Record<string, any> = {
   "Lunges": ArrowDown,
   "Wall Sit": User,
   "Single Leg Glute Bridges": Activity,
+  "Single Leg Glute Bridges (Other Leg)": Activity,
   "Push-ups": Dumbbell,
   "Pike Push-ups": ArrowUp,
   "Tricep Dips": ArrowDown,
@@ -68,7 +69,7 @@ const exerciseIcons: Record<string, any> = {
 const getCategoryColor = (exerciseName: string) => {
   if (["Plank Hold", "Bicycle Crunches", "Russian Twists", "Dead Bug", "Vertical Leg Crunch"].includes(exerciseName)) {
     return "bg-accent/20 text-accent"; // Abs - green
-  } else if (["Jump Squats", "Lunges", "Wall Sit", "Single Leg Glute Bridges", "Jump Lunges", "Side Lunges", "Calf Raises"].includes(exerciseName)) {
+  } else if (["Jump Squats", "Lunges", "Wall Sit", "Single Leg Glute Bridges", "Single Leg Glute Bridges (Other Leg)", "Jump Lunges", "Side Lunges", "Calf Raises"].includes(exerciseName)) {
     return "bg-warning/20 text-warning"; // Legs - yellow
   } else if (["Push-ups", "Pike Push-ups", "Tricep Dips", "Arm Circles"].includes(exerciseName)) {
     return "bg-secondary/20 text-secondary"; // Upper body - dark
@@ -242,6 +243,15 @@ export function ExerciseImage({ exerciseName, instructions }: ExerciseImageProps
               <img 
                 src={singleLegGluteBridgeImage} 
                 alt="Single Leg Glute Bridges Exercise"
+                className="w-full h-full object-cover"
+              />
+            </div>
+          ) : exerciseName === "Single Leg Glute Bridges (Other Leg)" ? (
+            // Use same image but with different label for the other leg version
+            <div className="w-32 h-20 mx-auto rounded-lg overflow-hidden shadow-md">
+              <img 
+                src={singleLegGluteBridgeImage} 
+                alt="Single Leg Glute Bridges (Other Leg) Exercise"
                 className="w-full h-full object-cover"
               />
             </div>

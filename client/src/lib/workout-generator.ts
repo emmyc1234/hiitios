@@ -85,15 +85,32 @@ export function generateWorkout(config: WorkoutConfig, exercises: Exercise[]): W
     exerciseLastUsedIndex.set(selectedExercise.id, i);
   }
 
-  // Generate workout exercises
-  const workoutExercises: WorkoutExercise[] = selectedExercises.map(exercise => ({
-    exerciseId: exercise.id,
-    name: exercise.name,
-    description: exercise.description,
-    workDuration,
-    restDuration,
-    instructions: exercise.instructions,
-  }));
+  // Generate workout exercises with special handling for Single Leg Glute Bridges
+  const workoutExercises: WorkoutExercise[] = [];
+  
+  selectedExercises.forEach(exercise => {
+    // Add the main exercise
+    workoutExercises.push({
+      exerciseId: exercise.id,
+      name: exercise.name,
+      description: exercise.description,
+      workDuration,
+      restDuration,
+      instructions: exercise.instructions,
+    });
+    
+    // If it's Single Leg Glute Bridges, immediately add the other leg version
+    if (exercise.name === "Single Leg Glute Bridges") {
+      workoutExercises.push({
+        exerciseId: exercise.id + "_other_leg",
+        name: "Single Leg Glute Bridges (Other Leg)",
+        description: "Switch to the other leg and repeat the same glute bridge movement for balanced muscle development.",
+        workDuration,
+        restDuration,
+        instructions: ["Lie on back with knees bent", "Lift the OTHER leg up", "Push through planted heel", "Lift hips up", "Squeeze glutes at top", "Lower slowly"],
+      });
+    }
+  });
 
   // Adjust the last exercise to have no rest period
   if (workoutExercises.length > 0) {
