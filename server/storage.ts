@@ -99,7 +99,7 @@ export class MemStorage implements IStorage {
         difficulty: 3,
         equipment: "none",
         instructions: ["Lie on back", "Extend legs straight up", "Hands behind head", "Crunch upper body toward legs", "Keep legs vertical", "Focus on upper abs"],
-        imageUrl: null,
+        imageUrl: "/attached_assets/videoframe_5988_1754057834869.png",
         animationSteps: ["Lie flat on back", "Legs straight up", "Hands behind head", "Crunch up toward legs", "Hold briefly", "Lower with control"]
       },
       {
