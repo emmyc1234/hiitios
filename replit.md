@@ -49,7 +49,7 @@ Exercise visuals: User prefers simple icons and clean design over complex animat
 ### Backend Services
 - **Storage Layer**: Abstracted storage interface with in-memory implementation for development
 - **Exercise Management**: CRUD operations for exercise database
-- **Workout Generation**: Algorithm for creating personalized workout routines
+- **Workout Generation**: Algorithm for creating personalized workout routines with smart exercise repetition control (max 2x per exercise, 3+ exercise gap between repeats)
 - **Session Tracking**: Recording completed workouts and user progress
 
 ## Data Flow

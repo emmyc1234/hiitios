@@ -41,14 +41,48 @@ export function generateWorkout(config: WorkoutConfig, exercises: Exercise[]): W
   const totalSeconds = durationMinutes * 60;
   const maxExercises = Math.floor(totalSeconds / totalIntervalTime);
   
-  // Select exercises (shuffle and take required amount)
-  const shuffledExercises = [...filteredExercises].sort(() => Math.random() - 0.5);
-  const selectedExercises = shuffledExercises.slice(0, Math.min(maxExercises, filteredExercises.length));
+  // Smart exercise selection with repetition control
+  const selectedExercises: Exercise[] = [];
+  const exerciseUsageCount = new Map<string, number>();
+  const exerciseLastUsedIndex = new Map<string, number>();
   
-  // If we need more exercises than available, repeat some
-  while (selectedExercises.length < maxExercises) {
-    const additionalExercises = shuffledExercises.slice(0, maxExercises - selectedExercises.length);
-    selectedExercises.push(...additionalExercises);
+  // Shuffle exercises for variety
+  const shuffledExercises = [...filteredExercises].sort(() => Math.random() - 0.5);
+  
+  for (let i = 0; i < maxExercises; i++) {
+    let selectedExercise: Exercise | null = null;
+    
+    // First, try to find an unused exercise
+    for (const exercise of shuffledExercises) {
+      const usageCount = exerciseUsageCount.get(exercise.id) || 0;
+      if (usageCount === 0) {
+        selectedExercise = exercise;
+        break;
+      }
+    }
+    
+    // If no unused exercises, find one that can be repeated (max 2 times, with 3+ exercise gap)
+    if (!selectedExercise) {
+      for (const exercise of shuffledExercises) {
+        const usageCount = exerciseUsageCount.get(exercise.id) || 0;
+        const lastUsedIndex = exerciseLastUsedIndex.get(exercise.id) || -1;
+        
+        if (usageCount < 2 && (i - lastUsedIndex) >= 3) {
+          selectedExercise = exercise;
+          break;
+        }
+      }
+    }
+    
+    // Fallback: if still no exercise found, use any available exercise
+    if (!selectedExercise) {
+      selectedExercise = shuffledExercises[i % shuffledExercises.length];
+    }
+    
+    // Update tracking
+    selectedExercises.push(selectedExercise);
+    exerciseUsageCount.set(selectedExercise.id, (exerciseUsageCount.get(selectedExercise.id) || 0) + 1);
+    exerciseLastUsedIndex.set(selectedExercise.id, i);
   }
 
   // Generate workout exercises
