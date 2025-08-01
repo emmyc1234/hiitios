@@ -42,8 +42,8 @@ Exercise visuals: User prefers simple icons and clean design over complex animat
 
 ### Frontend Components
 - **Workout Setup**: Configuration interface for workout parameters including customizable exercise duration (45s, 60s, 75s)
-- **Workout Screen**: Active workout interface with exercise instructions and timer
-- **Rest Screen**: Rest period interface with countdown timer
+- **Workout Screen**: Active workout interface with exercise instructions, timer, and home button for mid-workout exit
+- **Rest Screen**: Rest period interface with countdown timer and home button for mid-workout exit
 - **Workout Complete**: Post-workout summary and save functionality
 
 ### Backend Services

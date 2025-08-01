@@ -45,6 +45,13 @@ export default function WorkoutPage() {
     setLocation("/");
   };
 
+  const handleReturnHome = () => {
+    // Clear workout data and return to setup screen
+    sessionStorage.removeItem("currentWorkout");
+    sessionStorage.removeItem("workoutConfig");
+    setLocation("/");
+  };
+
   if (!workout.length) {
     return (
       <div className="min-h-screen flex items-center justify-center">
@@ -70,6 +77,7 @@ export default function WorkoutPage() {
           workoutConfig={workoutConfig}
           onExerciseComplete={handleExerciseComplete}
           onWorkoutExit={handleWorkoutExit}
+          onReturnHome={handleReturnHome}
         />
       )}
       
@@ -78,6 +86,7 @@ export default function WorkoutPage() {
           nextExercise={nextExercise}
           restDuration={currentExercise.restDuration}
           onRestComplete={handleRestComplete}
+          onReturnHome={handleReturnHome}
         />
       )}
       

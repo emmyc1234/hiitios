@@ -7,7 +7,8 @@ import {
   Play, 
   X, 
   SkipForward,
-  PlayCircle
+  PlayCircle,
+  Home
 } from "lucide-react";
 import { useWorkoutTimer } from "@/hooks/use-workout-timer";
 import { ExerciseImage } from "@/components/exercise-animation";
@@ -21,6 +22,7 @@ interface WorkoutScreenProps {
   workoutConfig: any;
   onExerciseComplete: () => void;
   onWorkoutExit: () => void;
+  onReturnHome: () => void;
 }
 
 export function WorkoutScreen({
@@ -31,6 +33,7 @@ export function WorkoutScreen({
   workoutConfig,
   onExerciseComplete,
   onWorkoutExit,
+  onReturnHome,
 }: WorkoutScreenProps) {
   const [isPaused, setIsPaused] = useState(false);
   const { timeRemaining, progress, isActive, start, pause, resume, skip } = useWorkoutTimer({
@@ -68,6 +71,14 @@ export function WorkoutScreen({
       {/* Workout Header */}
       <div className="bg-gradient-to-r from-primary to-warning text-white p-4">
         <div className="flex items-center justify-between mb-4">
+          <Button 
+            variant="ghost" 
+            size="icon"
+            className="text-white hover:bg-white/20"
+            onClick={onReturnHome}
+          >
+            <Home size={20} />
+          </Button>
           <Button 
             variant="ghost" 
             size="icon"

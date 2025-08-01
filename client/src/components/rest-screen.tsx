@@ -1,6 +1,7 @@
 import { useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
+import { Home } from "lucide-react";
 import { useWorkoutTimer } from "@/hooks/use-workout-timer";
 import { type WorkoutExercise } from "@shared/schema";
 
@@ -8,9 +9,10 @@ interface RestScreenProps {
   nextExercise?: WorkoutExercise;
   restDuration: number;
   onRestComplete: () => void;
+  onReturnHome: () => void;
 }
 
-export function RestScreen({ nextExercise, restDuration, onRestComplete }: RestScreenProps) {
+export function RestScreen({ nextExercise, restDuration, onRestComplete, onReturnHome }: RestScreenProps) {
   const { timeRemaining, progress, start, skip } = useWorkoutTimer({
     duration: restDuration,
     onComplete: onRestComplete,
@@ -29,6 +31,18 @@ export function RestScreen({ nextExercise, restDuration, onRestComplete }: RestS
 
   return (
     <div className="max-w-md mx-auto min-h-screen bg-gradient-to-br from-accent to-green-400 dark:from-green-600 dark:to-green-800 text-white flex flex-col justify-center p-6">
+      {/* Home Button */}
+      <div className="absolute top-4 left-4">
+        <Button 
+          variant="ghost" 
+          size="icon"
+          className="text-white hover:bg-white/20"
+          onClick={onReturnHome}
+        >
+          <Home size={20} />
+        </Button>
+      </div>
+
       <div className="text-center space-y-6">
         {/* Rest Timer */}
         <div className="relative w-32 h-32 mx-auto">
