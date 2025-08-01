@@ -175,14 +175,14 @@ export class MemStorage implements IStorage {
         animationSteps: ["Plank position", "Lift right arm", "Hold steady", "Return to plank", "Lift left arm", "Keep alternating"]
       },
       {
-        name: "Tricep Dips",
-        description: "Sit on edge of chair, lower body by bending elbows, push back up.",
+        name: "Diamond Push-ups",
+        description: "Push-ups with hands forming diamond shape, targets triceps. Modify on knees if needed.",
         targetAreas: ["upper-body"],
-        difficulty: 3,
-        equipment: "chair",
-        instructions: ["Sit on edge of chair", "Hands beside hips", "Lower body by bending elbows", "Keep elbows close to body", "Push back up", "Don't use legs too much"],
+        difficulty: 4,
+        equipment: "none",
+        instructions: ["Form diamond with hands", "Start in plank position", "Lower chest to diamond", "Keep elbows close to body", "Push back up", "Modify on knees if needed"],
         imageUrl: null,
-        animationSteps: ["Sit on chair edge", "Hands beside hips", "Lower body down", "Bend elbows back", "Push back up", "Control movement"]
+        animationSteps: ["Diamond hand position", "Plank stance", "Lower to diamond", "Keep elbows in", "Push back up", "Control movement"]
       },
       {
         name: "Arm Circles",
