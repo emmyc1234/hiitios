@@ -165,14 +165,14 @@ export class MemStorage implements IStorage {
         animationSteps: ["Plank position", "Lower chest down", "Keep body straight", "Push back up", "Control movement", "Repeat motion"]
       },
       {
-        name: "High Knees",
-        description: "Run in place bringing knees up high toward chest, pump arms for added intensity.",
-        targetAreas: ["upper-body", "full-body"],
-        difficulty: 2,
+        name: "Shoulder Taps",
+        description: "Hold plank position and alternate tapping each shoulder with opposite hand while keeping hips stable.",
+        targetAreas: ["upper-body"],
+        difficulty: 3,
         equipment: "none",
-        instructions: ["Stand with feet hip-width apart", "Run in place", "Bring knees up high", "Pump arms actively", "Keep chest up", "Maintain quick pace"],
+        instructions: ["Start in plank position", "Keep hips stable", "Tap left shoulder with right hand", "Return to plank", "Tap right shoulder with left hand", "Keep core engaged"],
         imageUrl: null,
-        animationSteps: ["Stand ready", "Lift right knee high", "Switch to left knee", "Pump arms", "Keep quick rhythm", "Stay light on feet"]
+        animationSteps: ["Plank position", "Tap left shoulder", "Return to plank", "Tap right shoulder", "Return to plank", "Keep alternating"]
       },
       {
         name: "Tricep Dips",
