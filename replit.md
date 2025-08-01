@@ -97,11 +97,12 @@ Exercise visuals: User prefers simple icons and clean design over complex animat
 - **Environment Variables**: DATABASE_URL for database connection
 
 ### Mobile App Deployment (Added August 1, 2025)
-- **Capacitor Integration**: Native iOS and Android apps created using Capacitor
-- **iOS Project**: Located in `/ios` folder, ready for Xcode and App Store deployment
-- **Android Project**: Located in `/android` folder, ready for Android Studio and Google Play deployment
-- **Mobile Build Process**: `npm run build` + `npx cap sync` to update mobile apps
+- **Expo Integration**: Native iOS and Android apps configured using Expo EAS
+- **Project ID**: `04cb6672-3826-49e1-bbc2-d61897a118b6` linked to user's Expo account
+- **Cloud Builds**: EAS Build handles iOS/Android compilation without requiring Mac/Xcode
+- **Auto-Submission**: Configured for direct submission to App Store and Google Play Store
 - **App Configuration**: Bundle ID `com.hiitworkout.app`, app name "HIIT Workout"
+- **Build Command**: `npx eas-cli@latest build --platform all --auto-submit`
 
 ### Key Configuration Files
 - **drizzle.config.ts**: Database migration and schema configuration
