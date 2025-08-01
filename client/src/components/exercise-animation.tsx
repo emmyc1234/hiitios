@@ -30,7 +30,7 @@ import jumpLungesImage from "@assets/videoframe_2551_1754059303596.png";
 import sideLungesImage from "@assets/videoframe_3570_1754059364900.png";
 import calfRaisesImage from "@assets/videoframe_5743_1754059651143.png";
 import kickbacksImage1 from "@assets/videoframe_3231_1754060319975.png";
-import kickbacksImage2 from "@assets/videoframe_6103_1754060319981.png";
+import kickbacksImage2 from "@assets/videoframe_5433_1754061348382.png";
 import pikePushUpsImage from "@assets/videoframe_3696_1754060597535.png";
 import tricepExtensionsImage1 from "@assets/videoframe_245_1754061092120.png";
 import tricepExtensionsImage2 from "@assets/videoframe_2115_1754061092124.png";
@@ -235,13 +235,22 @@ export function ExerciseImage({ exerciseName, instructions }: ExerciseImageProps
               />
             </div>
           ) : exerciseName === "Kickbacks" ? (
-            // Use actual kickbacks images provided by user - alternating between two positions
-            <div className="w-32 h-20 mx-auto rounded-lg overflow-hidden shadow-md">
-              <img 
-                src={kickbacksImage1} 
-                alt="Kickbacks Exercise"
-                className="w-full h-full object-cover"
-              />
+            // Use both kickbacks images provided by user showing different positions
+            <div className="flex gap-1">
+              <div className="w-16 h-16 rounded-lg overflow-hidden shadow-md">
+                <img 
+                  src={kickbacksImage1} 
+                  alt="Kickbacks Starting Position"
+                  className="w-full h-full object-cover"
+                />
+              </div>
+              <div className="w-16 h-16 rounded-lg overflow-hidden shadow-md">
+                <img 
+                  src={kickbacksImage2} 
+                  alt="Kickbacks Extended Position"
+                  className="w-full h-full object-cover"
+                />
+              </div>
             </div>
           ) : exerciseName === "Wall Sit" ? (
             // Use actual wall sit image provided by user
@@ -317,21 +326,12 @@ export function ExerciseImage({ exerciseName, instructions }: ExerciseImageProps
             </div>
           ) : exerciseName === "Bodyweight Tricep Extensions" ? (
             // Use both bodyweight tricep extensions images provided by user
-            <div className="flex gap-1">
-              <div className="w-16 h-16 rounded-lg overflow-hidden shadow-md">
-                <img 
-                  src={tricepExtensionsImage1} 
-                  alt="Bodyweight Tricep Extensions Starting Position"
-                  className="w-full h-full object-cover"
-                />
-              </div>
-              <div className="w-16 h-16 rounded-lg overflow-hidden shadow-md">
-                <img 
-                  src={tricepExtensionsImage2} 
-                  alt="Bodyweight Tricep Extensions Lowered Position"
-                  className="w-full h-full object-cover"
-                />
-              </div>
+            <div className="w-32 h-20 mx-auto rounded-lg overflow-hidden shadow-md">
+              <img 
+                src={tricepExtensionsImage1} 
+                alt="Bodyweight Tricep Extensions Exercise"
+                className="w-full h-full object-cover"
+              />
             </div>
           ) : (
             <div className={`w-20 h-20 rounded-full flex items-center justify-center mx-auto ${colorClass}`}>
