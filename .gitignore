@@ -1,6 +1,22 @@
-node_modules
-dist
+# Node / Vite
+node_modules/
+dist/
+!.keep
+
+# macOS
 .DS_Store
-server/public
-vite.config.ts.*
-*.tar.gz
+
+# Xcode
+DerivedData/
+xcuserdata/
+
+# CocoaPods (let CI run `pod install`; do commit Podfile + Podfile.lock)
+Pods/
+
+# Capacitor build outputs (native build products)
+ios/App/build/
+
+# Replit / editor clutter
+.replit
+.vscode/
+.idea/
