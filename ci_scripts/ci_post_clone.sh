@@ -1,21 +1,21 @@
 #!/bin/sh
 set -euo pipefail
 
-echo "🟣 Post-clone: build web and copy into iOS (Capacitor)"
+echo "🔧 Post-clone: install deps, build web, copy into iOS, install pods"
 
-# Install node deps (prefer npm ci when lockfile exists)
+# Node deps
 if [ -f package-lock.json ]; then
   npm ci
 else
   npm install
 fi
 
-# Build the web app (outputs to dist/public)
+# Build your web app into dist/public
 npm run build
 
-# Copy web assets into the iOS project (Capacitor)
+# Copy web into iOS and refresh native side
 npx cap copy ios
 
-# Install CocoaPods for the iOS workspace
+# Install CocoaPods
 cd ios/App
 pod install --repo-update
